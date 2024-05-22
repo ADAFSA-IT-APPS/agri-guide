@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="!enableSearch">
+      <ion-button fill="clear" class="filter-icon" (click)="openMenu()">
+        <ion-icon color="primary" name="ic-filter"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon *ngIf="filterBy == 'agri'" name="empty-leaf"></ion-icon>
+        <ion-icon *ngIf="filterBy == 'farm'" name="farm"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{'events' | translate}}</ion-title>
+    <ion-buttons slot="end" *ngIf="!enableSearch">
+      <ion-button (click)="toggleSearch()">
+        <ion-icon color="dark" name="search"></ion-icon>
+      </ion-button> 
+      <ion-button>
+        <app-btn-notification></app-btn-notification>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="enableSearch">
+      <ion-button (click)="toggleSearch()">
+        <ion-icon color="dark" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!enableSearch">
+    <ion-slides #slides class="events-slider" (ionSlideWillChange)="slideChanged($event)" pager="true"
+      [options]="slideOpts">
+      <ion-slide *ngFor="let item of filterEventList">
+        <div class="slider-content" (click)="goToEvent(item.id)">
+          <img [src]="path + item.banner" onError="this.src='./assets/no-image.svg'"/>
+        </div>
+      </ion-slide>
+    </ion-slides>
+    <div class="no-events" *ngIf="filterEventList.length == 0">
+      <ion-text>
+        <strong>{{'noEventsFound' | translate}}</strong>
+      </ion-text>
+    </div>
+    <ion-list lines="none" class="event-list" *ngIf="filterEventList.length > 0">
+      <ng-container *ngFor="let item of eventList; let i = index">
+        <ion-item detail *ngIf="i == activeId">
+          <div class="item-details" (click)="goToEvent(item.id)">
+            <ion-text>{{item.startDateTime | date:'dd MMMM'}}</ion-text>
+            <ion-label>{{currentLang == 'en' ? item.title : item.title_ar}}</ion-label>
+          </div>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+    <!-- Card for adding a new event -->
+    <!-- <ion-card>
+    <ion-card-header tappable (click)="collapseCard = !collapseCard">
+      <ion-card-title>New Event</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="!collapseCard">
+
+      <ion-item>
+        <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Description" [(ngModel)]="event.desc"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Start</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>End</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>All Day?</ion-label>
+        <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+      </ion-item>
+      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''">Add Event</ion-button>
+
+    </ion-card-content>
+  </ion-card> -->
+
+    <ion-row>
+      <!-- Change the displayed calendar mode -->
+      <!-- <ion-col size="4">
+      <ion-button expand="block" [color]="calendar.mode == 'month' ? 'primary' : 'secondary'" (click)="changeMode('month')">Month</ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button expand="block" [color]="calendar.mode == 'week' ? 'primary' : 'secondary'" (click)="changeMode('week')">Week</ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button expand="block" [color]="calendar.mode == 'day' ? 'primary' : 'secondary'" (click)="changeMode('day')">Day</ion-button>
+    </ion-col> -->
+
+      <!-- Move back one screen of the slides -->
+      <ion-col size="auto" class="ion-text-left">
+        <ion-button fill="clear" (click)="back()">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <ion-col class="cal-month">
+        <ion-label>
+          <h2>{{viewTitle}}</h2>
+        </ion-label>
+      </ion-col>
+
+      <!-- Move forward one screen of the slides -->
+      <ion-col size="fill" class="ion-text-right">
+        <ion-button fill="clear" (click)="next()">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <div class="calendar-wrapper">
+      <calendar [eventSource]="eventSource" [showEventDetail]="false" [calendarMode]="calendar.mode"
+        [currentDate]="calendar.currentDate" [autoSelect]="false" (onEventSelected)="onEventSelected($event)"
+        (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30">
+      </calendar>
+    </div>
+
+    <div class="ion-padding">
+      <ion-button expand="block" color="primary" (click)="goToMonth()">{{'MonthView' | translate}}</ion-button>
+    </div>
+  </div>
+  <div *ngIf="enableSearch" class="ion-padding-bottom">
+    <ion-searchbar placeholder="{{'searchEvent' | translate}}" [(ngModel)]="searchTerm"></ion-searchbar>
+    <div class="events-wrapper">
+      <div class="events-list">
+        <app-event-search [search]="searchTerm"></app-event-search>
+      </div>
+    </div>
+    <div class="empty-search" *ngIf="searchTerm == ''">
+      <app-explore-container name="{{'searchEvent' | translate}}"></app-explore-container>
+    </div>
+  </div>
+</ion-content>

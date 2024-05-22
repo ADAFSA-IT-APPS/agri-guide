@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">{{'viewImages' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="sub-title ion-text-center ion-padding-vertical">
+    <ion-text>{{ currentLang == 'en' ? details.heading : details.heading_ar}}</ion-text>
+  </div>
+  <!-- <div class="sub-title ion-text-center ion-padding-vertical">
+    <ion-text>What you want Know?</ion-text>
+  </div> -->
+  <ion-list class="ion-padding">
+    <ion-item lines="none" class="ion-no-padding" *ngFor="let image of details.medias">
+      <div *ngIf="image.type == 'picture'">
+        <img [src]="path + image.url" onError="this.src='./assets/no-image.svg'"/>
+        <ion-text>{{ currentLang == 'en' ? image.title : image.title_ar}}</ion-text>
+      </div>
+      <div *ngIf="image.type == 'video'" >
+        <iframe width="100%" height="300" [src]="image.url">
+        </iframe>
+      </div>
+      <div *ngIf="image.type == 'excel'" class="other-docs" (click)="openBrowser(image.url)">
+        <ion-icon name="ic-xls"></ion-icon>
+      </div>
+      <div *ngIf="image.type == 'pdf'" class="other-docs" (click)="openBrowser(image.url)">
+        <ion-icon name="ic-pdf"></ion-icon>
+      </div>
+      <div *ngIf="image.type == 'word'" class="other-docs" (click)="openBrowser(image.url)">
+        <ion-icon name="ic-doc"></ion-icon>
+      </div>
+      <div *ngIf="image.type == 'ppt'" class="other-docs" (click)="openBrowser(image.url)">
+        <ion-icon name="ic-ppt"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

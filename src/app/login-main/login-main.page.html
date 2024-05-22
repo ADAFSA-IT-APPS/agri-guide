@@ -1,0 +1,31 @@
+<ion-header mode="ios" color="primary">
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="main">
+    <div class="header">
+      <div class="content">
+        <ion-text class="title" color="secondary">{{"welcomeTo" | translate}}</ion-text>
+        <ion-text class="desc">{{"abudhabiAgrecultureGuide" | translate}}</ion-text>
+      </div>
+    </div>
+
+    <div class="footer ion-padding-horizontal">
+      <div class="login">
+        <ion-button expand="block" class="ion-margin-bottom" color="light" (click)="goToGuest(1)">
+          {{"ADAFSARegistration" | translate}}
+        </ion-button>
+        <!-- <ion-button expand="block" color="light" (click)="goToGuest(2)">{{"guestRegistration" | translate}}
+        </ion-button> -->
+      </div>
+      <!-- <ion-text class="title ion-margin-vertical">{{"or" | translate}}</ion-text>
+      <div class="guest" (click)="guestVisitor()">
+        <ion-text>{{"continueAsGuestVisitor" | translate}}</ion-text>
+      </div> -->
+    </div>
+  </div>
+</ion-content>

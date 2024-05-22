@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'symptoms' | translate}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{'back' | translate}}" color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="care-wrapper">
+    <div class="inner-details">
+      <ion-card *ngFor="let symptoms of animalSymptoms">
+        <img [src]="path + symptoms.banner" onError="this.src='./assets/no-image.svg'"
+          (click)="symptomDetails(symptoms.id)" />
+        <ion-card-content>
+          <div class="pest-foot">
+            <ion-text (click)="symptomDetails(symptoms.id)">{{currentLang == 'en' ? symptoms.title : symptoms.title_ar}}
+            </ion-text>
+            <!-- <ion-icon *ngIf="details.categories.advisor != null" name="ic-chat"
+              (click)="goToChat(details.categories.advisor)"></ion-icon> -->
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <div class="ask-advisor-wrapper ion-padding" *ngIf="!guest">
+    <div class="main-heading">
+      <ion-label class="ion-text-center">
+        {{'CantFindExactSymptoms' | translate }}
+      </ion-label>
+    </div>
+    <div class="ask-advisor" (click)="openModal()">
+      <div>
+        <ion-icon name="ic-chat" color="light"></ion-icon>
+      </div>
+      <div class="details">
+        <ion-label class="title">
+          <h2>{{ 'askAdvisory' | translate }}</h2>
+        </ion-label>
+        <ion-text>{{ 'couldntFindRightSymptoms' | translate }}</ion-text>
+      </div>
+    </div>
+  </div>
+</ion-content>

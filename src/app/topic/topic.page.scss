@@ -1,0 +1,119 @@
+ion-toolbar {
+    --border-width: 0 !important;
+}
+
+.custom-skeleton {
+    .dimg {
+        ion-skeleton-text {
+            height: 150px;
+            width: calc(100% - 12px);
+            margin: auto;
+            border-radius: 12px;
+        }
+    }
+
+    ion-label {
+        ion-skeleton-text {
+            width: 50% !important;
+            margin: auto;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            height: 6px;
+        }
+    }
+}
+
+.selected-item {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    .img {
+        margin-right: 10px;
+        text-align: center;
+
+        ion-img {
+            height: 64px;
+            width: 64px;
+            margin: auto;
+            background: #e5e7e6;
+            padding: 4px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            &::part(image){
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+                border-radius: 2px;
+            }
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        color: #5C6770;
+        flex-grow: 1;
+
+        ion-label {
+            font-size: .8rem;
+        }
+
+        ion-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    }
+    .remove {
+        font-size: 2rem;
+    }
+}
+
+.topic-filter {
+    ion-col {
+        height: 70px;
+        display: flex;
+        align-items: center;
+
+        div {
+            background: #F3F3F3;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 16px 10px;
+            font-weight: bold;
+            align-items: center;
+            position: relative;
+            &.ar{
+                &.selected {
+                    &:after {
+                        right: 10px;
+                        left: initial;
+                    }
+                }
+            }
+            &.selected {
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 20px;
+                    height: 6px;
+                    background: #E94757;
+                    border-radius: 4px;
+                    bottom: 12px;
+                    left: 10px;
+                }
+            }
+        }
+    }
+}
+
+.topic-list {
+    img{    
+            margin-bottom: 12px;
+            border-radius: 10px;
+            height: 150px;
+            object-fit: cover;
+            width: 100%;
+    }
+}

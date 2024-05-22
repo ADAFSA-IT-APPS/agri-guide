@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="back()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{'scanImage' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" #content>
+  <!-- <input type="file" name="uploadImage" id="uploadImage" (change)="upload($event.target.files)"> -->
+  <div class="image-proccess-wrapper">
+    <div class="image-proccess ion-padding">
+      <img [src]="image" onError="this.src='./assets/no-image.svg'" alt="" *ngIf="image" id="image">
+      <div class="loading-wrapper" *ngIf="loading">
+        <p class="loading">{{"processing" | translate}}<span>.</span><span>.</span><span>.</span></p>
+      </div>
+    </div>
+    <div id="proccess-data" class="proccess-data ion-padding" *ngIf="scanComplete">
+      <ng-container *ngIf="parseNumber(matchingPercentage) > 60; else others">
+        <ion-label color="primary" class="ion-text-center">
+          <h2 class="ion-padding-bottom">{{'resultFound' | translate}}</h2>
+        </ion-label>
+        <div>
+          <ion-text>{{'YourPlantIsInfectedWith' | translate}} <b>{{diseaseName}}</b></ion-text><br>
+          <ion-text>{{'confidence' | translate}}: <b>{{matchingPercentage}}%</b></ion-text>
+        </div>
+      </ng-container>
+      <ng-template #others>
+        <ion-label color="danger" class="ion-text-center">
+          <h2 class="ion-padding-bottom">{{'noResultFound' | translate}}</h2>
+        </ion-label>
+        <div>
+          <ion-label>{{'YouCanAlwaysAskOurAdvisor' | translate}}</ion-label>
+        </div>
+      </ng-template>
+    </div>
+    <div class="care-wrapper">
+      <div class="inner-details">
+        <ion-label color="primary" *ngIf="diseasesList.length > 0" class="ion-no-padding">
+          <h2 class="ion-no-margin ion-padding-horizontal">{{'matchingDiseases' | translate}}</h2>
+        </ion-label>
+        <ng-container *ngFor="let pest of diseasesList">
+          <ion-card>
+            <img [src]="path + pest.diseases.banner" onError="this.src='./assets/no-image.svg'" (click)="diseaseDetails(pest.diseases.id)" />
+            <ion-card-content>
+              <div class="pest-foot">
+                <ion-text (click)="diseaseDetails(pest.diseases.id)">{{currentLang == 'en' ? pest.diseases.title : pest.diseases.title_ar }}</ion-text>
+                <!-- <ion-icon name="ic-chat" [routerLink]="['/conversation']"></ion-icon> -->
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!-- <ion-img [src]="image" *ngIf="image"></ion-img> -->
+</ion-content>
+
+
+<ion-footer mode="ios" class="ion-padding" *ngIf="!scanComplete && image && !loading">
+  <ion-toolbar>
+    <ion-button color="primary" (click)="startScanning()" expand="block">{{"startScaning" | translate}}
+      <div class="arrows">
+        <div id="arrowAnim">
+          <div class="arrowSliding">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay1">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay2">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay3">
+            <div class="arrow"></div>
+          </div>
+        </div>
+      </div>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+<ion-footer mode="ios" class="ion-padding" *ngIf="scanComplete">
+  <ion-toolbar>
+    <ion-button color="primary" (click)="presentAlertPrompt()" expand="block">{{"askAdvisory" | translate}}
+      <div class="arrows">
+        <div id="arrowAnim">
+          <div class="arrowSliding">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay1">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay2">
+            <div class="arrow"></div>
+          </div>
+          <div class="arrowSliding delay3">
+            <div class="arrow"></div>
+          </div>
+        </div>
+      </div>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+
+<!-- <ion-content>  
+
+  <div *ngIf="picture">
+    
+    <img [src]="picture">
+    
+    <ion-fab bottom center>
+      <button ion-fab (click)="startCamera()">
+        <ion-icon name="arrow-dropleft"></ion-icon>
+      </button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="switchCamera()">
+        <ion-icon name="cloud-upload"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    
+  </div>
+
+  <div *ngIf="!picture" class="base">
+
+
+    <ion-fab vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="takePicture()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="startCamera()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+  </div>    
+
+</ion-content> -->

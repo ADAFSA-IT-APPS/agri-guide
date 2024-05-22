@@ -1,0 +1,76 @@
+<ion-header mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="end">
+      <ion-button color="dark" (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="type == '1'">{{"selectCategory" | translate}}</ion-title>
+    <ion-title *ngIf="type == '2'">{{"SelectYourAnimal" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main">
+    <div class="content ion-padding-horizontal">
+      <div>
+        <div *ngIf="dummy">
+          <ion-grid class="ion-no-padding custom-skeleton">
+            <ion-row>
+              <ion-col size="3" *ngFor="let item of dummy">
+                <div class="dimg">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <ion-label>
+                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </ion-label>
+                </ion-col>
+                </ion-row>
+          </ion-grid>
+        </div>    
+        <div *ngIf="hasSubCat" class="header">
+          <ion-segment mode="ios">
+            <ion-segment-button (click)="back()">
+              <div>
+                <ion-icon name="chevron-back-outline"></ion-icon>
+                <ion-img [src]="path + catDetails.icon" (ionError)="onError($event)"></ion-img>
+                <ion-label *ngIf="currentLang == 'en'">{{catDetails.name}}</ion-label>
+                <ion-label *ngIf="currentLang == 'ar'">{{catDetails.name_ar}}</ion-label>
+              </div>
+            </ion-segment-button>
+           
+          </ion-segment>
+        </div>
+        <ion-grid *ngIf="!hasSubCat">
+          <ion-row>
+            <ion-col size="3" *ngFor="let item of filterCat">
+              <div class="item" [ngClass]="selectedCat?.id == item.id ? 'selected' : ''" (click)="selectItem(item)">
+                <ion-img [src]="path + item.icon" (ionError)="onError($event)"></ion-img>
+                <ion-text *ngIf="currentLang == 'en'">{{item.name}}</ion-text>
+              <ion-text *ngIf="currentLang == 'ar'">{{item.name_ar}}</ion-text>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid *ngIf="hasSubCat">
+          <ion-row>
+            <ion-col size="3" *ngFor="let item of subCatList">
+              <div class="item" [ngClass]="selectedCat?.id == item.id ? 'selected' : ''" (click)="selectItem(item)">
+                <ion-img [src]="path + item.icon" (ionError)="onError($event)"></ion-img>
+                <ion-text *ngIf="currentLang == 'en'">{{item.name}}</ion-text>
+              <ion-text *ngIf="currentLang == 'ar'">{{item.name_ar}}</ion-text>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer mode="ios" class="ion-padding-horizontal ion-padding-bottom">
+  <ion-toolbar>
+    <ion-button *ngIf="type == '1'" expand="block" (click)="submit()">{{"select" | translate}}</ion-button>
+    <ion-button *ngIf="type == '2'" expand="block" (click)="submit()">{{"ShowSymptom" | translate}}</ion-button>
+  </ion-toolbar>
+</ion-footer>

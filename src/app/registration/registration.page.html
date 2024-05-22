@@ -1,0 +1,376 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"registerAccount" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" #content>
+  <div class="main">
+    <form [formGroup]="registerForm" novalidate>
+      <div class="content">
+
+        <ion-item-divider mode="ios" class="ion-margin-top">
+          <ion-label>{{"individualRegistration" | translate}}</ion-label>
+        </ion-item-divider>
+
+        <ion-list class="ion-margin-top">
+          <ion-label position="stacked" color="secondary" mode="ios">{{"prefix" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-radio-group mode="md" formControlName="PrefixName" class="gender-wrapper">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-item lines="none" class="ion-no-padding">
+                    <ion-label>{{"mr" | translate}}</ion-label>
+                    <ion-radio slot="start" value="2600"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-item lines="none">
+                    <ion-label>{{"mrs" | translate}}</ion-label>
+                    <ion-radio slot="start" value="2601"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-radio-group>
+        </ion-list>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.PrefixName.invalid">
+          <span *ngIf="f.PrefixName.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- First Name Ar -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"firstNameAr" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input dir="rtl" type="text" id="FirstName" formControlName="FirstName"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.FirstName.invalid">
+          <span *ngIf="f.FirstName.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- First Name En -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"firstNameEn" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="FirstName_En"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.FirstName_En.invalid">
+          <span *ngIf="f.FirstName_En.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Second Name Ar -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"secondNameAr" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input dir="rtl" type="text" formControlName="SecondName"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.SecondName.invalid">
+          <span *ngIf="f.SecondName.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Second Name En -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"secondNameEn" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="SecondName_En"></ion-input>
+        </ion-item>
+        <ion-text class="required" color="danger" *ngIf="submitted && f.SecondName_En.invalid">
+          <span *ngIf="f.SecondName_En.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Last Name Ar -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"familyNameAr" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input dir="rtl" type="text" formControlName="LastName"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.LastName.invalid">
+          <span *ngIf="f.LastName.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Last Name En -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"familyNameEn" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="LastName_En"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.LastName_En.invalid">
+          <span *ngIf="f.LastName_En.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Gender -->
+        <ion-list class="ion-margin-top">
+          <ion-label mode="ios" position="stacked" color="secondary">{{"gender" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-radio-group mode="md" formControlName="Gender" class="gender-wrapper">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-item lines="none" class="ion-no-padding">
+                    <ion-label>Male</ion-label>
+                    <ion-radio slot="start" value="true"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-item lines="none">
+                    <ion-label>Female</ion-label>
+                    <ion-radio slot="start" value="false"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-radio-group>
+        </ion-list>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.Gender.invalid">
+          <span *ngIf="f.Gender.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Nationality -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"nationality" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ionic-selectable formControlName="Nationality" [items]="nationalities" itemValueField="ID"
+            itemTextField="NameEN" [canSearch]="true" (onChange)="countryChange($event)">
+          </ionic-selectable>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.Nationality.invalid">
+          <span *ngIf="f.Nationality.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Marital Status -->
+        <ion-list class="ion-margin-top">
+          <ion-label mode="ios" position="stacked" color="secondary">{{"maritalStatus" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-radio-group mode="md" formControlName="MaritalStatusID" class="gender-wrapper">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" *ngFor="let item of marital">
+                  <ion-item lines="none" class="ion-no-padding">
+                    <ion-label>{{item.name}}</ion-label>
+                    <ion-radio slot="start" [value]="item.id"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-radio-group>
+        </ion-list>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.MaritalStatusID.invalid">
+          <span *ngIf="f.MaritalStatusID.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Date of Birth -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"dob" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-datetime formControlName="BirthDate"></ion-datetime>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.BirthDate.invalid">
+          <span *ngIf="f.BirthDate.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Identific Type -->
+        <ion-list class="ion-margin-top">
+          <ion-label mode="ios" position="stacked" color="secondary">{{"applicationClass" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-radio-group mode="md" formControlName="IdentificType" (ionChange)="identificChange($event)" value="89" class="gender-wrapper">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" *ngFor="let item of applicationClass">
+                  <ion-item lines="none" class="ion-no-padding">
+                    <ion-label>{{item.name}}</ion-label>
+                    <ion-radio slot="start" [value]="item.id"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-radio-group>
+        </ion-list>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.IdentificType.invalid">
+          <span *ngIf="f.IdentificType.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Identification Number -->
+        <ion-item class="ion-margin-top">
+          <ion-label *ngIf="registerForm.value.IdentificType == '91' || registerForm.value.IdentificType == '95'"
+            position="stacked" color="secondary">{{"passportNumber" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-label *ngIf="registerForm.value.IdentificType == '89' || registerForm.value.IdentificType == '90'"
+            position="stacked" color="secondary">{{"emirateID" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="text" *ngIf="registerForm.value.IdentificType == '91' || registerForm.value.IdentificType == '95'" minlength="10" formControlName="IdentificNO"></ion-input>
+          <ion-input type="text" *ngIf="registerForm.value.IdentificType == '89' || registerForm.value.IdentificType == '90'" minlength="18" [brmasker]="{mask:'000-0000-0000000-0', len:18, userCaracters: false}" formControlName="IdentificNO"></ion-input>
+        </ion-item>
+
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.IdentificNO.invalid">
+          <span *ngIf="f.IdentificNO.errors.required">{{'required' | translate}}</span>
+          <span *ngIf="f.IdentificNO.errors.minlength">{{'invalid' | translate}}</span>
+        </ion-text>
+
+        <!-- Expiry Date -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"expiryDate" | translate}}<ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-datetime formControlName="ExpiryDate" min="{{startYear}}" max="2050"></ion-datetime>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.ExpiryDate.invalid">
+          <span *ngIf="f.ExpiryDate.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Attachments -->
+        <ion-item class="ion-margin-top eid-attachment" lines="none">
+          <ion-label position="stacked" color="secondary">{{"emirateIdAttachment" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-button color="primary" size="medium" expand="block" (click)="selectImage()">{{"upload" | translate}}
+          </ion-button>
+        </ion-item>
+        <!-- efile.click() -->
+        <!-- <input  #efile type="file" (change)="upload($event.target.files)" id="file-input" accept="image/jpeg"> -->
+
+        <ion-text style="font-size: .7rem;" color="danger">
+          {{"emiratesUploadMsg" | translate }}
+        </ion-text>
+        <div class="attachmentList">
+          <ion-grid>
+            <ion-row class="w-100">
+              <ion-col size="6" *ngFor="let item of docImages; let i = index">
+                <div class="img-wrapper">
+                  <ion-img src="{{'data:image/jpeg;base64,' + item.FileBase64String}}"></ion-img>
+                  <div class="ion-text-center remove-image">
+                  <ion-label name="close-circle" color="danger" (click)="deleteImage(item, i)">{{'remove' | translate}} <ion-icon name="trash"></ion-icon></ion-label>
+                </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <ion-item-divider mode="ios" class="ion-margin-top">
+          <ion-label>{{"contactInformation" | translate}}</ion-label>
+        </ion-item-divider>
+
+        <!-- Email Address -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"emailAddress" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-text class="required" color="danger" *ngIf="submitted && f.email.invalid">
+          <span *ngIf="f.email.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Confirm Email Address -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"confirmEmailAddress" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="email" formControlName="cemail"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.cemail.invalid">
+          <span *ngIf="f.cemail.errors.required">{{'required' | translate}}</span>
+          <span *ngIf="f.cemail.errors.MatchEmail">{{'emailMismatch' | translate}}</span>
+        </ion-text>
+
+        <!-- First Mobile NO -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"mobileNo" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input placehoder="05x xxx xxxx" formControlName="FirstMobileNO"></ion-input>
+        </ion-item>
+        <ion-text style="font-size: .7rem;" color="danger">{{'mobileFormart' | translate}}</ion-text><br>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.FirstMobileNO.invalid">
+          <span *ngIf="f.FirstMobileNO.errors.required">{{'required' | translate}}</span>
+          <span *ngIf="f.FirstMobileNO.errors?.pattern">{{'invalidPhone' | translate}}</span>
+        </ion-text>
+
+        <!-- Second Mobile NO -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"phoneNo" | translate}}</ion-label>
+          <ion-input placehoder="05x xxx xxxx" formControlName="SecondMobileNO"></ion-input>
+        </ion-item>
+        <ion-text style="font-size: .7rem;" color="danger">{{'phoneFormart' | translate}}</ion-text><br>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.SecondMobileNO.invalid">
+          <span *ngIf="f.SecondMobileNO.errors?.pattern">{{'invalidPhone' | translate}}</span>
+        </ion-text>
+
+        <!-- Country -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"country" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ionic-selectable formControlName="CountryID" [items]="countries" itemValueField="ID" itemTextField="NameEN"
+            [canSearch]="true" (onChange)="countryChange($event)">
+          </ionic-selectable>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.CountryID.invalid">
+          <span *ngIf="f.CountryID.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- City Name -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"city" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="CityName"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.CityName.invalid">
+          <span *ngIf="f.CityName.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <ion-item-divider mode="ios" class="ion-margin-top">
+          <ion-label>{{"loginInformation" | translate}}</ion-label>
+        </ion-item-divider>
+
+        <!-- Login Name -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"usernameEmail" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="LoginName"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.LoginName.invalid">
+          <span *ngIf="f.LoginName.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Password -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"enterPassword" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.password.invalid">
+          <span *ngIf="f.password.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+        <!-- Confirm Password -->
+        <ion-item class="ion-margin-top">
+          <ion-label position="stacked" color="secondary">{{"confirmPassword" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-input type="password" formControlName="cpassword"></ion-input>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.cpassword.invalid">
+          <span *ngIf="f.cpassword.errors.required">{{'required' | translate}}</span>
+          <span *ngIf="f.cpassword.errors.MatchPassword">{{'passwordMismatch' | translate}}</span>
+        </ion-text>
+
+        <!-- <ion-item-divider mode="ios" class="ion-margin-top">
+          <ion-label>{{"preferences" | translate}}</ion-label>
+        </ion-item-divider> -->
+
+        <!-- Prefered Lang -->
+        <!-- <ion-list>
+          <ion-label mode="ios" position="stacked" color="secondary">{{"preferedLang" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-radio-group mode="md" formControlName="PreferredLang" class="gender-wrapper" (ionChange)="langChange()">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" *ngFor="let item of preflang">
+                  <ion-item lines="none" class="ion-no-padding">
+                    <ion-label>{{item.name}}</ion-label>
+                    <ion-radio slot="start" [value]="item.id"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-radio-group>
+        </ion-list>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.PreferredLang.invalid">
+          <span *ngIf="f.PreferredLang.errors.required">{{'required' | translate}}</span>
+        </ion-text> -->
+
+        <!-- Policy -->
+        <ion-item-divider mode="ios" class="ion-margin-top">
+          <ion-label>{{"usePolicy" | translate}}</ion-label>
+        </ion-item-divider>
+
+        <ion-item lines="none">
+          <ion-label class="ion-text-wrap">{{"iAgree" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+          <ion-checkbox slot="start" formControlName="agree"></ion-checkbox>
+        </ion-item>
+        <ion-text class="required"  color="danger" *ngIf="submitted && f.agree.invalid">
+          <span *ngIf="f.agree.errors.required">{{'required' | translate}}</span>
+        </ion-text>
+
+      </div>
+      <div class="footer">
+        <div class="login">
+          <ion-button color="primary" (click)="submit()">{{"registerAccount" | translate}}
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

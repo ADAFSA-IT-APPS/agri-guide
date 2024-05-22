@@ -1,0 +1,135 @@
+ion-toolbar {
+  --border-width: 0 !important;
+}
+ion-toolbar ion-title {
+  font-weight: bold;
+}
+
+ion-content {
+  --background: rgba(217, 199, 158, .4);
+  background: #fff;
+}
+ion-content .main {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+}
+ion-content .main .slideshow {
+  position: absolute;
+  top: -16px;
+  bottom: -16px;
+  left: -16px;
+  right: -16px;
+  z-index: 0;
+}
+ion-content .main .slideshow ion-slides {
+  height: 100%;
+  direction: ltr;
+}
+ion-content .main .slideshow ion-slides ion-slide.swiper-slide-active ion-img {
+  transition: all 8s ease !important;
+  transform: scale(1.2) !important;
+}
+ion-content .main .slideshow ion-slides ion-slide:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+ion-content .main .slideshow ion-slides ion-slide ion-img {
+  height: 100%;
+  width: 100%;
+}
+ion-content .main .slideshow ion-slides ion-slide ion-img::part(image) {
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+}
+ion-content .header {
+  margin-top: 24px;
+}
+ion-content .header .lang ion-button {
+  width: 36px;
+  height: 36px;
+  --background: #E7E6E6;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --color: #7E7E77;
+  --color-activated: #E7E6E6;
+}
+ion-content .content {
+  position: relative;
+}
+ion-content .content ion-item {
+  --highlight-background: transparent !important;
+  --border-radius: 10px;
+  --border-width: 1px;
+  --min-height: 36px !important;
+  --border-color: #D0D0D0;
+  --inner-border-width: 0;
+  --background: transparent;
+  --color: #fff;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+ion-content .content ion-item ion-icon {
+  margin-inline: 0 8px !important;
+  width: 24px;
+}
+ion-content .content ion-item ion-input {
+  border-left: 1px solid #fff;
+  --padding-start: 5px;
+}
+ion-content .content .login ion-button {
+  --background: rgb(255 255 255 / 40%);
+  --background-activated: rgb(204 159 83 / 40%);
+}
+ion-content .divider {
+  font-size: 3rem;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+ion-content .divider .line {
+  height: 2px;
+  background: #fff;
+  margin-bottom: 12px;
+  border-radius: 25px;
+}
+ion-content .divider ion-icon {
+  margin: 0 16px;
+}
+ion-content .forgot {
+  padding: 16px 0;
+  font-size: 1rem;
+}
+ion-content .footer {
+  margin-top: 36px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+ion-content .footer ion-button {
+  --background: rgb(255 255 255 / 40%);
+  --background-activated: rgb(204 159 83 / 40%);
+}
+
+.label-stacked {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.required {
+  font-size: 0.7rem;
+}/*# sourceMappingURL=adafsa-login.page.css.map */

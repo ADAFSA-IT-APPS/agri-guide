@@ -1,0 +1,6 @@
+<ion-button (click)="notifications()">
+  <div>
+    <ion-icon color="dark" name="ic-notification"></ion-icon>
+    <ion-badge color="danger" *ngIf="count > 0">{{count}}</ion-badge>
+  </div>
+</ion-button>

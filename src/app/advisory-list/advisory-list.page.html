@@ -1,0 +1,128 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{'advisory' | translate}}
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="!guest">
+      <ion-button (click)="openModal()">
+        <ion-icon name="ic-add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher *ngIf="!guest" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Segment -->
+  <!-- <ion-segment [(ngModel)]="chatType" mode="md" color="primary">
+    <ion-segment-button value="message">
+      <ion-label>Open Request</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="groups">
+      <ion-label>Archived</ion-label>
+    </ion-segment-button>
+  </ion-segment> -->
+  <div>
+    <ion-list class="app-list" lines="none">
+      <!-- <ion-item-sliding *ngFor="let chat of chatList"> -->
+        <!-- <ion-item-options side="start">
+          <ion-item-option color="primary">
+            <div>
+              <ion-icon name="pin"></ion-icon>
+              <ion-text>Pin</ion-text>
+            </div>
+          </ion-item-option>
+        </ion-item-options> -->
+        <ion-item routerLinkActive="router-link-active" *ngFor="let chat of chatList"
+          (click)="showConversation(chat)">
+          <ion-avatar slot="start" *ngIf="chat.fromUsersId != profileData.usersId">
+            <img [src]="path + chat.profilePic" onError="this.src='./assets/user.svg'">
+          </ion-avatar>
+          <ion-avatar slot="start" *ngIf="chat.fromUsersId == profileData.usersId">
+            <img [src]="path + chat.toProfilePic" onError="this.src='./assets/user.svg'">
+          </ion-avatar>
+          <ion-label *ngIf="chat.fromUsersId != profileData.usersId">
+            <h2>{{ chat.fromUsername }}</h2>
+            <p class="message">{{ chat.message }}</p>
+            <!-- <ion-icon color="s"></ion-icon> -->
+          </ion-label>
+          <ion-label *ngIf="chat.fromUsersId == profileData.usersId">
+            <h2>{{ chat.toUsername }}</h2>
+            <p class="message">{{ chat.message }}</p>
+            <!-- <ion-icon color="s"></ion-icon> -->
+          </ion-label>
+        </ion-item>
+        <!-- <ion-item-options side="end">
+          <ion-item-option color="secondary">
+            <div>
+              <ion-icon name="archive"></ion-icon>
+              <ion-text>Archive</ion-text>
+            </div>
+          </ion-item-option>
+          <ion-item-option color="danger">
+            <div>
+              <ion-icon name="trash"></ion-icon>
+              <ion-text>Delete</ion-text>
+            </div>
+          </ion-item-option>
+        </ion-item-options> -->
+      <!-- </ion-item-sliding> -->
+    </ion-list>
+  </div>
+  <div *ngIf="guest" class="guest-wrapper">
+    <div>
+    <div class="ion-margin-bottom ion-text-center">
+      <ion-img src="./assets/login-logo.svg"></ion-img>
+    </div>
+    <div class="ion-text-center">
+      <ion-text color="danger">{{'featureNotAvailableForGuestUser' | translate}}</ion-text>
+      <ion-button (click)="goLogin()" class="ion-margin-top" size="sm" color="primary">{{'loginToAccount' | translate}}
+      </ion-button>
+    </div>
+  </div>
+  </div>
+  
+</ion-content>
+<ion-toolbar>
+  <ion-footer>
+    <div class="channel-title">
+      <ion-text>{{'ADAFSAChannels' | translate}}</ion-text>
+    </div>
+    <ion-row class="channel-list">
+      <ion-col size="3" (click)="openSocial('1')">
+        <ion-img src="./assets/facebook.svg"></ion-img>
+        <ion-text>@adafsa.gov</ion-text>
+      </ion-col>
+      <ion-col size="3" (click)="openSocial('2')">
+        <ion-img src="./assets/youtube.svg"></ion-img>
+        <ion-text>@adafsa_gov</ion-text>
+      </ion-col>
+      <ion-col size="3" (click)="openSocial('3')">
+        <ion-img src="./assets/snapchat.svg"></ion-img>
+        <ion-text>@adafsa_gov</ion-text>
+      </ion-col>
+      <ion-col (click)="openSocial('4')" size="3">
+        <ion-img src="./assets/instagram.svg"></ion-img>
+        <ion-text>@adafsa_gov</ion-text>
+      </ion-col>
+      <ion-col (click)="openSocial('5')" size="3">
+        <ion-img src="./assets/twitter.svg"></ion-img>
+        <ion-text>@adafsa_gov</ion-text>
+      </ion-col>
+      <ion-col (click)="openTelegram('1')" size="3">
+        <ion-img src="./assets/telegram.svg"></ion-img>
+        <ion-text>{{'Agriculture' | translate}}</ion-text>
+      </ion-col>
+      <ion-col (click)="openTelegram('2')" size="3">
+        <ion-img src="./assets/telegram.svg"></ion-img>
+        <ion-text>{{'AnimalWealth' | translate}}</ion-text>
+      </ion-col>
+      <ion-col (click)="openTelegram('3')" size="3">
+        <ion-img src="./assets/telegram.svg"></ion-img>
+        <ion-text>{{'FoodSafety' | translate}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+</ion-toolbar>

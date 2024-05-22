@@ -1,0 +1,31 @@
+ion-toolbar {
+    --border-width: 0 !important;
+}
+
+::ng-deep ng-otp-input {
+    width: 100%;
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 40%;
+        .otp-input {
+            width: 15% !important;
+            height: 50px !important;
+            max-width: 50px;
+        }
+    }
+}
+
+.otp-expire {
+    margin-top: 20px;
+    ion-label {
+        p {
+            color: red;
+        }
+    }
+}
+
+.ro-icon-wrapper{
+    width: 100%;
+}

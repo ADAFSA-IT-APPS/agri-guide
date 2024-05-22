@@ -1,0 +1,138 @@
+h2 {
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  /* Define the style rules for the 'arrow icons' */
+}
+h2.active {
+  color: var(--ion-color-primary);
+}
+h2 span {
+  position: absolute;
+  right: 1em;
+  top: 1.2em;
+  font-size: 0.95em;
+}
+
+.pest-details {
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+}
+.pest-details img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 8px;
+  border-radius: 12px;
+}
+.pest-details ion-label {
+  font-weight: bold;
+  margin-top: 8px;
+  overflow: hidden;
+  white-space: break-spaces;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.pest-details ion-text {
+  font-size: 0.8rem;
+}
+
+.header {
+  position: relative;
+  padding: 16px;
+  background: rgba(203, 216, 220, 0.5);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header ion-icon {
+  font-size: 2rem;
+  color: #2C2F3A;
+}
+.header h2 {
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.header .highlights {
+  display: flex;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.header .highlights .events {
+  border-right: 1px solid #5C6770;
+  margin-right: 8px;
+  padding-right: 8px;
+  color: #5C6770;
+}
+
+/* Here we define the actual 'menu' and its 'options' */
+.image-wrapper {
+  margin: 0 auto 2em auto;
+  width: 20%;
+}
+.image-wrapper img {
+  display: block;
+  margin: auto;
+}
+
+p {
+  line-height: 1.2em;
+  margin: 0 0 1.2em 0;
+  font-family: Verdana;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Following classes display/hide the 'menu'
+ // based on the state change detection in the
+ // component class */
+div.active {
+  display: block;
+  padding: 16px;
+}
+
+div.inactive {
+  display: none;
+}
+
+.month-details .event-details {
+  margin-top: 10px;
+}
+.month-details .event-details h3 {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.month-details .sub-title {
+  background: var(--ion-color-primary) !important;
+  border-radius: 0 !important;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #5C6770;
+  font-size: 14px;
+  font-weight: 300;
+}
+.month-details .sub-title .day {
+  color: #fff;
+}
+.month-details img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}/*# sourceMappingURL=accordion.component.css.map */

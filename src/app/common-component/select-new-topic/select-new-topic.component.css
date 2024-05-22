@@ -1,0 +1,111 @@
+ion-header {
+  height: 44px !important;
+}
+
+ion-select {
+  min-width: 100%;
+  padding-left: 0;
+}
+
+ion-item {
+  padding: 8px 0;
+}
+ion-item div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-wrapper {
+  background: #FDFDFD;
+  box-shadow: 0 -5px 12px #636363;
+}
+.top-wrapper .title {
+  color: var(--ion-color-secondary);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0px !important;
+}
+.top-wrapper .title ion-label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.top-wrapper .header ion-item {
+  border: 2px solid #979797 !important;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.top-wrapper .header ion-item ion-label {
+  text-align: initial;
+}
+.top-wrapper .header ion-item img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.top-wrapper ion-segment {
+  --background: transparent;
+  border: 2px solid #979797 !important;
+  --ion-background-color: #B8CC94 !important;
+  --box-shadow: none;
+  height: 64px !important;
+}
+.top-wrapper ion-segment ion-segment-button {
+  margin: 0 !important;
+  --border-radius: 0;
+  --indicator-box-shadow: 0;
+}
+.top-wrapper ion-segment ion-segment-button img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.top-wrapper ion-segment ion-segment-button ion-label {
+  margin: 0 10px;
+}
+.top-wrapper ion-segment ion-segment-button ion-img::part(image) {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.top-wrapper ion-segment ion-segment-button::part(indicator) {
+  margin-left: -2px;
+  margin-right: -2px;
+}
+.top-wrapper ion-segment ion-segment-button:before {
+  margin: 0 !important;
+  --border-width: 0 !important;
+}
+.top-wrapper ion-segment ion-segment-button div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.top-wrapper ion-segment ion-segment-button div ion-icon {
+  font-size: 1.4rem;
+  margin-right: 8px;
+}
+
+.wizzard-steps .title {
+  color: var(--ion-color-secondary);
+  margin: 16px 0;
+}
+.wizzard-steps .title ion-label {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+ion-textarea {
+  border: 1px solid #b3b3b3;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+ion-footer ion-buttons {
+  margin: 0;
+}
+ion-footer ion-buttons ion-button {
+  width: 100px;
+}/*# sourceMappingURL=select-new-topic.component.css.map */

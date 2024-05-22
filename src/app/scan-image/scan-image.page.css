@@ -1,0 +1,191 @@
+ion-toolbar {
+  --border-width: 0 !important;
+}
+
+ion-content {
+  --background: transparent;
+}
+
+.ion-toolbar {
+  --border-width: 0px !important;
+}
+
+.cameraPreview {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.image-proccess-wrapper .image-proccess {
+  position: relative;
+  width: 100%;
+  flex-basis: auto;
+}
+.image-proccess-wrapper .image-proccess img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.image-proccess-wrapper .image-proccess .loading-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.care-wrapper img {
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.care-wrapper .pest-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.care-wrapper .pest-foot ion-icon {
+  font-size: 1.6rem;
+}
+
+ion-footer ion-button {
+  --background: transparent;
+  height: 48px;
+  min-width: 220px;
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+
+#arrowAnim {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.arrows {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.arrow {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid;
+  border-color: white transparent transparent white;
+  transform: rotate(135deg);
+}
+
+.arrowSliding {
+  position: absolute;
+  -webkit-animation: slide 4s linear infinite;
+  animation: slide 4s linear infinite;
+}
+
+.delay1 {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.delay2 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.delay3 {
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s;
+}
+
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-1rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-1rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+.loading {
+  color: #fff;
+  text-shadow: 0 1px 6px black;
+}
+
+.loading span {
+  font-size: 40px;
+  -webkit-animation-name: blink;
+          animation-name: blink;
+  -webkit-animation-duration: 1.4s;
+          animation-duration: 1.4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.loading span:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.loading span:nth-child(3) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}/*# sourceMappingURL=scan-image.page.css.map */

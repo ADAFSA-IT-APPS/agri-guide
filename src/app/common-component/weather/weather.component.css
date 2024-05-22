@@ -1,0 +1,55 @@
+.weather-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.weather-wrapper .temp {
+  background: rgba(203, 216, 220, 0.2);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.weather-wrapper .temp div {
+  flex-grow: 1;
+  flex-basis: auto;
+  text-align: center;
+  margin: 10px 0;
+}
+.weather-wrapper .temp div.high {
+  border-right: 1px solid rgba(151, 151, 151, 0.26);
+}
+.weather-wrapper .temp div ion-text {
+  font-size: 10px;
+  opacity: 0.5;
+}
+.weather-wrapper .temp div ion-label h2 {
+  font-size: 1.4rem;
+  color: var(--ion-color-secondary);
+  font-weight: 500;
+}
+.weather-wrapper .weather {
+  background: rgba(203, 216, 220, 0.2);
+  height: 100%;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.weather-wrapper .weather .content {
+  display: flex;
+  flex-direction: column;
+}
+.weather-wrapper .weather .content ion-text {
+  font-size: 14px;
+  opacity: 0.5;
+}
+.weather-wrapper .weather .content ion-label {
+  margin-top: 14px;
+  text-transform: capitalize;
+}
+.weather-wrapper .weather .icon ion-icon {
+  display: flex;
+  align-items: center;
+  font-size: 4.4rem;
+}/*# sourceMappingURL=weather.component.css.map */

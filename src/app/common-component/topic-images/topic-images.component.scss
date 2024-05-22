@@ -1,0 +1,45 @@
+ion-toolbar {
+    --border-width: 0 !important;
+    --background: var(--ion-color-secondary);
+}
+
+ion-content {
+    --background: var(--ion-color-secondary);
+    --color: #fff;
+
+    ion-list {
+        background: transparent;
+
+        ion-item {
+            --background: transparent;
+            --color: #fff;
+            --inner-padding-end: 0;
+
+            .other-docs {
+                height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4rem;
+                border: 1px solid #fff;
+                margin: 8px 0;
+            }
+            
+            div {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                flex-direction: column;
+
+                img {
+                    width: 100%;
+                }
+
+                ion-text {
+                    margin-bottom: 20px;
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+ion-toolbar {
+    --border-width: 0 !important;
+}
+
+.filter-icon{
+    font-size: .8rem;
+}
+.no-events {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.cal-month{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.events-slider {
+    --bullet-background-active: #ED737E;
+    .slider-content {
+        width: 100%;
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+}
+.event-list{
+ion-item{
+    --background: rgb(216 216 216 / 0.2);
+    .item-details{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    ion-text{
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    ion-label{
+        font-weight: 500;
+    }
+}
+}
+}
+
+.calendar-wrapper{
+    padding: 8px;
+}
+
+::ng-deep .swiper-pagination{
+    display: inline-flex !important;
+}
+
+::ng-deep .swiper-pagination-bullet{
+    width: 50%;
+    border-radius: 2px;
+    height: 5px !important;
+}
+
+::ng-deep .monthview-container{
+    height: max-content !important;
+}
+::ng-deep .monthview-container tbody td{
+    border: none !important;
+}
+
+::ng-deep .monthview-container thead th{
+    border: none !important;
+    border-bottom: 1px solid #DBDCDD !important;
+    color: #8C8F93;
+    font-weight: 400;
+}
+
+::ng-deep .monthview-container table{
+    border: none !important;
+    border-spacing: 4px;
+    border-collapse: separate;
+}
+
+::ng-deep .monthview-primary-with-event{
+    background-color: #E94757 !important;
+    color: white;
+    border-radius: 25%;
+}
+
+::ng-deep .monthview-current{
+    border-radius: 25%;
+}

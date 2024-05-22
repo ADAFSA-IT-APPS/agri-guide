@@ -1,0 +1,18 @@
+ion-toolbar {
+  --border-width: 0 !important;
+}
+
+.event-details {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.event-details ion-card-subtitle {
+  font-weight: 400 !important;
+}
+.event-details img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}/*# sourceMappingURL=event-search.component.css.map */

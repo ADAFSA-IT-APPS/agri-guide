@@ -1,0 +1,62 @@
+ion-menu ion-toolbar {
+  --border-width: 0px !important;
+}
+ion-menu ion-toolbar ion-title {
+  text-align: left;
+}
+ion-menu ion-list {
+  border-top: 1px solid #F3F3F3;
+}
+ion-menu ion-list ion-item::part(native) {
+  --padding-start: 0;
+}
+ion-menu ion-list ion-item.filter-cat ion-img::part(image) {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+ion-menu ion-list ion-item ion-label {
+  margin-left: 8px;
+  font-size: 0.8rem;
+}
+ion-menu ion-list .fav-item {
+  border-top: 1px solid rgba(112, 112, 112, 0.2);
+  margin-top: 10px;
+}
+ion-menu ion-list .fav-item ion-label {
+  font-size: 1rem;
+}
+ion-menu ion-checkbox {
+  --size: 24px;
+  --checkmark-color: var(--ion-color-secondary);
+  --border-radius: 5px;
+  --background: #F3F3F3;
+  --border-color: transparent;
+  --border-width: 6px;
+}
+
+ion-footer ion-button {
+  width: 100%;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: var(--ion-color-primary) !important;
+  border-color: var(--ion-color-primary) !important;
+}
+
+ion-radio-group ion-item ion-icon {
+  font-size: 36px;
+  color: #000;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--ion-color-secondary) !important;
+}
+
+ion-radio::part(container) {
+  background: #F3F3F3;
+  border-color: #F3F3F3;
+}/*# sourceMappingURL=app.component.css.map */

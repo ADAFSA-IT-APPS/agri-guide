@@ -1,0 +1,31 @@
+ion-toolbar {
+  --border-width: 0 !important;
+  --background: #69737B;
+}
+
+ion-content {
+  --background: #69737B;
+  --color: #fff;
+}
+ion-content ion-list {
+  background: transparent;
+  padding-top: 0;
+}
+ion-content ion-list ion-item {
+  --background: transparent;
+  --color: #fff;
+  --inner-padding-end: 0;
+}
+ion-content ion-list ion-item div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-direction: column;
+}
+ion-content ion-list ion-item div img {
+  width: 100%;
+}
+ion-content ion-list ion-item div ion-text {
+  margin-bottom: 20px;
+  margin-top: 8px;
+}/*# sourceMappingURL=farm-images.component.css.map */

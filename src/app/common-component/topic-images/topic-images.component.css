@@ -1,0 +1,39 @@
+ion-toolbar {
+  --border-width: 0 !important;
+  --background: var(--ion-color-secondary);
+}
+
+ion-content {
+  --background: var(--ion-color-secondary);
+  --color: #fff;
+}
+ion-content ion-list {
+  background: transparent;
+}
+ion-content ion-list ion-item {
+  --background: transparent;
+  --color: #fff;
+  --inner-padding-end: 0;
+}
+ion-content ion-list ion-item .other-docs {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border: 1px solid #fff;
+  margin: 8px 0;
+}
+ion-content ion-list ion-item div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-direction: column;
+}
+ion-content ion-list ion-item div img {
+  width: 100%;
+}
+ion-content ion-list ion-item div ion-text {
+  margin-bottom: 20px;
+  margin-top: 8px;
+}/*# sourceMappingURL=topic-images.component.css.map */

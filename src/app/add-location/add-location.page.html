@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="params.type == 'edit'">{{'editFarm' | translate}}</ion-title>
+    <ion-title *ngIf="params.type == 'new'">{{'addFarm' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="map-container">
+    <input id="map-input" type="text" placeholder="Enter a location" />
+    <div class="div_map" #map></div>
+  </div>
+  <div class="farm-location">
+    <form [formGroup]="farmForm" novalidate>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"location" | translate}}</ion-label>
+        <ion-input placehoder="" formControlName="address" readonly></ion-input>
+      </ion-item>
+    <ion-item class="ion-margin-vertical">
+      <ion-label position="stacked" color="secondary">{{"farmName" | translate}}</ion-label>
+      <ion-input placehoder="" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-vertical">
+      <ion-label position="stacked" color="secondary">{{"city" | translate}}</ion-label>
+      <ion-input placehoder="" formControlName="city"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-vertical">
+      <ion-label position="stacked" color="secondary">{{"country" | translate}}</ion-label>
+      <ion-input placehoder="" formControlName="country"></ion-input>
+    </ion-item>
+  </form>
+  </div>
+  <div class="farm-images">
+    <div class="ion-padding-horizontal">
+      <!-- <input type="file" name="uploadImage" id="uploadImage" (change)="upload($event.target.files)"> -->
+      <ion-button class="ion-float-right" size="sm" color="secondary" (click)="selectImage()">{{'addImage' | translate}}</ion-button>
+    </div>
+    <ion-grid>
+      <ion-row class="w-100">
+        <ion-col size="6" *ngFor="let item of farmImages">
+          <ion-img *ngIf="item.fileContent" [src]="item.fileContent.base64"></ion-img>
+          <ion-img *ngIf="!item.fileContent" [src]="path + item.Url"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<ion-footer mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-no-border">
+    <ion-button expand="block" (click)="addFarm()">{{'save' | translate}}</ion-button>
+  </ion-toolbar>
+</ion-footer>

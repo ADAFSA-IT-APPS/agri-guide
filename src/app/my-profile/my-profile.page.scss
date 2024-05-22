@@ -1,0 +1,191 @@
+ion-toolbar {
+    --border-width: 0px !important;
+}
+
+.adafsa-logo{
+    margin: 30px auto 16px;
+    max-width: 200px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+ion-footer{
+    height: 40px;
+    .version{
+        font-size: .6rem;
+        opacity: .6;
+    }
+}
+
+.guest-wrapper{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+        ion-button {
+            //--background: linear-gradient(45deg, #66CF9F, #2df8ab);
+            //border-radius: 12px;
+            height: 48px;
+            min-width: 220px;
+            color: var(--ion-color-secondary);
+            font-weight: bold;
+        }
+         ion-label{
+        text-align: center;
+        text-decoration: underline;
+    }
+    ion-img{
+        max-width: 120px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}
+
+.no-farm {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    margin-top: 10px;
+}
+
+ion-segment {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+
+    ion-segment-button {
+        font-weight: 600;
+        font-size: 1rem;
+        text-transform: capitalize;
+        --indicator-height: 4px;
+
+        &::part(indicator-background) {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        ion-label {
+            color: #332519;
+        }
+    }
+}
+
+.images{
+    margin-top: 10px;
+}
+
+.image-list{
+    ion-img {
+        &::part(image) {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.profile-wrapper {
+    .profile-details {
+        background: #ffffff;
+        padding: 16px;
+
+        .profile-pic {
+            max-width: 100px;
+            margin: auto;
+
+            img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            ion-label {
+                margin-bottom: 8px;
+                margin-top: 4px;
+
+                h2 {
+                    font-weight: 500;
+                }
+            }
+
+            ion-text {
+                text-transform: capitalize;
+            }
+        }
+    }
+
+    .farm-details {
+        .farm-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h2 {
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+
+            ion-icon {
+                font-size: 1.6rem;
+            }
+        }
+
+        .empty-farm {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            background: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ion-color-secondary);
+        }
+        
+        .farm-list {
+            ion-item {
+                &::part(native){
+                    padding-left: 0 !important;
+                }
+                &.selected{
+                    .data{
+                        opacity: 1 !important;
+                    }
+                }
+                .farm-wrapper {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    .delete-farm{
+                        font-size: 1.6rem;
+                    }
+                    .data {
+                        display: flex;
+                        flex-direction: column;
+                        margin: 10px 0;
+                        flex-grow: 1;
+                        opacity: .7;
+
+                        ion-label {
+                            text-transform: capitalize;
+                            font-size: 1.2rem;
+                            margin-bottom: 10px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

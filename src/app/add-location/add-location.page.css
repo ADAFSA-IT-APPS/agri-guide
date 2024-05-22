@@ -1,0 +1,35 @@
+ion-toolbar {
+  --ion-border-width: 0 !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.farm-images ion-img::part(image) {
+  height: 150px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.map-container {
+  position: relative;
+}
+.map-container .div_map {
+  height: 350px;
+  width: 100%;
+}
+.map-container #map-input {
+  width: calc(100% - 70px);
+  height: 40px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  z-index: 99;
+  right: 30px;
+  left: 10px;
+  border: 0;
+  padding-left: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=add-location.page.css.map */

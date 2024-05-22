@@ -1,0 +1,68 @@
+.weather-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    .temp {
+        background: rgb(203 216 220 / .2);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        div {
+            flex-grow: 1;
+            flex-basis: auto;
+            text-align: center;
+            margin: 10px 0;
+
+            &.high {
+                border-right: 1px solid rgb(151 151 151 / .26);
+            }
+
+            ion-text {
+                font-size: 10px;
+                opacity: .5;
+            }
+
+            ion-label {
+                h2 {
+                    font-size: 1.4rem;
+                    color: var(--ion-color-secondary);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .weather {
+        background: rgb(203 216 220 / .2);
+        height: 100%;
+        margin-left: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            ion-text {
+                font-size: 14px;
+                opacity: .5;
+            }
+
+            ion-label {
+                margin-top: 14px;
+                text-transform: capitalize;
+            }
+        }
+
+        .icon {
+            ion-icon {
+                display: flex;
+                align-items: center;
+                font-size: 4.4rem;
+            }
+        }
+    }
+}

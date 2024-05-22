@@ -1,0 +1,24 @@
+ion-header{
+    --background: transparent;
+ion-toolbar {
+    --border-width: 0 !important;
+
+    ion-button {
+        --ion-color-primary-contrast: var(--ion-color-secondary);
+        }
+    }
+}
+
+ion-toolbar {
+    --border-width: 0 !important;
+}
+ion-item{
+    border-bottom: 1px solid #c8c7cc;
+    padding: 8px 0;
+ion-thumbnail{
+    img{
+    width: 100%;
+    object-fit: contain;
+}
+}
+}

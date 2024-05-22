@@ -1,0 +1,116 @@
+ion-toolbar {
+  --border-width: 0 !important;
+  --background: #FDFDFD;
+}
+ion-toolbar ion-button {
+  --ion-color-primary-contrast: var(--ion-color-secondary);
+}
+
+.main .title {
+  color: var(--ion-color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px;
+}
+.main .title ion-label {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+.main .header ion-item {
+  border: 2px solid #979797 !important;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.main .header ion-item ion-label {
+  text-align: initial;
+}
+.main .header ion-item img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.main ion-segment {
+  --background: transparent;
+  border: 2px solid #979797 !important;
+  --ion-background-color: #B8CC94 !important;
+  --box-shadow: none;
+  height: 64px !important;
+}
+.main ion-segment ion-segment-button {
+  margin: 0 !important;
+  --border-radius: 0;
+  --indicator-box-shadow: 0;
+}
+.main ion-segment ion-segment-button img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.main ion-segment ion-segment-button ion-label {
+  margin: 0 10px;
+}
+.main ion-segment ion-segment-button ion-img::part(image) {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.main ion-segment ion-segment-button::part(indicator) {
+  margin-left: -2px;
+  margin-right: -2px;
+}
+.main ion-segment ion-segment-button:before {
+  margin: 0 !important;
+  --border-width: 0 !important;
+}
+.main ion-segment ion-segment-button div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.main ion-segment ion-segment-button div ion-icon {
+  font-size: 1.4rem;
+  margin-right: 8px;
+}
+.main .item {
+  margin: 8px auto;
+  text-align: center;
+}
+.main .item ion-img {
+  height: 64px;
+  width: 64px;
+  margin: auto;
+  background: #d5e6ba;
+  padding: 2px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.main .item ion-img::part(image) {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+}
+.main .item ion-text {
+  font-size: 0.8rem;
+}
+
+.top-wrapper {
+  background: #FDFDFD;
+  box-shadow: 0 -5px 12px #636363;
+}
+
+.custom-skeleton .dimg ion-skeleton-text {
+  height: 70px;
+  width: 80%;
+  margin: auto;
+  border-radius: 12px;
+}
+.custom-skeleton ion-label ion-skeleton-text {
+  width: 50% !important;
+  margin: auto;
+  margin-top: 8px;
+  height: 6px;
+}/*# sourceMappingURL=filter-subject.page.css.map */

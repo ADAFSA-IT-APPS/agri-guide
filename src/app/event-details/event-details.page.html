@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home" color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon color="secondary" name="ic-notification"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-bottom ion-margin-bottom" *ngIf="loaded">
+    <div class="banner">
+      <img [src]="path + details.banner" onError="this.src='./assets/no-image.svg'"/>
+      <div class="title">
+        <ion-label>{{currentLang == 'en' ? details.title : details.title_ar}}</ion-label>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="name">
+        <ion-label>
+          <small>{{details.postedOn | date:'dd MMM yyyy'}}</small>
+          <h1>{{currentLang == 'en' ? details.title : details.title_ar}}</h1>
+        </ion-label>
+      </div>
+      <div class="action-btns">
+        <ion-icon name="ic-heart" *ngIf="!favFound" (click)="addFavorite(selectedId)"></ion-icon>
+        <ion-icon name="ic-heart-fill" *ngIf="favFound" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        <ion-icon name="ic-share" class="ion-hide"></ion-icon>
+      </div>
+    </div>
+    <div class="about-wrapper">
+    <div class="inner-details ion-padding">
+      <section class="ion-padding-bottom">
+        <div class="event-details">
+              <h2>{{'eventDetails' | translate}}</h2>
+              <ion-item lines="none">
+                <ion-text>{{'category' | translate}}</ion-text>
+                <ion-text slot="end">{{currentLang == 'en' ? details.topicTypes?.type : details.topicTypes?.type_ar}}</ion-text>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-text>{{'start' | translate}}</ion-text>
+                <ion-text slot="end">{{details.startDate | date:'dd MMM yyyy'}} {{details.startTime }}</ion-text>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-text>{{'end' | translate}}</ion-text>
+              <ion-text slot="end">{{details.endDate | date:'dd MMM yyyy'}} {{details.endTime }}</ion-text>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-text>{{'location' | translate}}</ion-text>
+            <ion-text slot="end">{{details.location}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" *ngIf="details.mapLink">
+          <ion-text>{{'map' | translate}}</ion-text>
+          <ion-icon slot="end" name="location-outline" (click)="openBrowser(details.mapLink)"></ion-icon>
+      </ion-item>
+       
+        </div>
+        <div class="join-event" *ngIf="!isBefore">
+            <div (click)="openBrowser(details.externalLink)">
+              <ion-label><h1>{{'joinEvent' | translate}}</h1></ion-label>
+              <ion-text>{{'visitEventURL' | translate}}</ion-text>
+            </div>
+        </div>
+        <div class="join-event expired" *ngIf="isBefore">
+          <div>
+            <ion-label><h1>{{'eventExpired' | translate}}</h1></ion-label>
+          </div>
+      </div>
+        <div class="description">
+          <div><p>{{currentLang == 'en' ? details.description : details.description_ar}}</p></div>
+        </div>
+        <div class="media">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" *ngFor="let itm of details.medias | slice:0:2; let i=index">
+                <div class="media-item">
+                  <div *ngIf="itm.type == 'picture'">
+                    <img (click)="openImages(details)" onError="this.src='./assets/no-image.svg'" [src]="path + itm.url" />
+                  </div>
+                  <div *ngIf="itm.type == 'video'">
+                    <iframe width="100%" height="150" [src]="itm.url">
+                    </iframe>
+                  </div>
+                  <div class="overlay" *ngIf="details.medias.length > 2 && i == 1" (click)="openImages(details)">
+                    <h1>+{{details.medias.length - 1}}</h1>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </section>
+    </div>
+  </div>
+</ion-content>

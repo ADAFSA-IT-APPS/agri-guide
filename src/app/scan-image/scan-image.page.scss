@@ -1,0 +1,165 @@
+ion-toolbar{
+  --border-width: 0 !important;
+}
+ion-content {
+    --background: transparent;
+}
+
+
+
+.ion-toolbar {
+    --border-width: 0px !important;
+}
+
+.cameraPreview {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.image-proccess-wrapper{
+  //width: 100%;
+  //height: 100%;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
+  .image-proccess{
+    position: relative;
+    width: 100%;
+    flex-basis: auto;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  .loading-wrapper{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+}
+
+.care-wrapper {
+  img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      object-position: center;
+  }
+
+  .pest-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      ion-icon {
+          font-size: 1.6rem;
+      }
+
+  }
+}
+
+
+ion-footer {
+    ion-button {
+        --background: transparent;
+        height: 48px;
+    min-width: 220px;
+    color: var(--ion-color-secondary);
+    font-weight: bold;
+    }
+}
+
+
+
+#arrowAnim {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .arrows{
+    width: 50px;
+    margin-left: 10px;
+  }
+  .arrow {
+    width: .8rem;
+    height: .8rem;
+    border: 2px solid;
+    border-color: white transparent transparent white;
+    transform: rotate(135deg);
+  }
+  
+  
+  .arrowSliding {
+    position: absolute;
+    -webkit-animation: slide 4s linear infinite; 
+            animation: slide 4s linear infinite;
+  }
+  
+  .delay1 {
+    -webkit-animation-delay: 1s; 
+      animation-delay: 1s;
+  }
+  .delay2 {
+    -webkit-animation-delay: 2s; 
+      animation-delay: 2s;
+  }
+  .delay3 {
+    -webkit-animation-delay: 3s; 
+      animation-delay: 3s;
+  }
+  
+  @-webkit-keyframes slide {
+      0% { opacity:0; transform: translateX(-2rem); }	
+     20% { opacity:1; transform: translateX(-1rem); }	
+     80% { opacity:1; transform: translateX(1rem); }	
+    100% { opacity:0; transform: translateX(2rem); }	
+  }
+  @keyframes slide {
+      0% { opacity:0; transform: translateX(-2rem); }	
+     20% { opacity:1; transform: translateX(-1rem); }	
+     80% { opacity:1; transform: translateX(1rem); }	
+    100% { opacity:0; transform: translateX(2rem); }	
+  }
+
+  .loading{
+    color: #fff;
+    text-shadow: 0 1px 6px black;
+  }
+
+  .loading span {
+    font-size: 40px;
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+  
+  .loading span:nth-child(2) {
+    animation-delay: .2s;
+  }
+  
+  .loading span:nth-child(3) {
+    animation-delay: .4s;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: .2;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: .2;
+    }
+  }

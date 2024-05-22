@@ -1,0 +1,13 @@
+<ion-card *ngFor="let itm of filterEvents" class="event-details" (click)="goToEvent(itm.id)">
+  <img [src]="path + itm.banner" onError="this.src='./assets/no-image.svg'"/>
+  <ion-card-header>
+    <ion-card-subtitle>{{itm.startDate | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+    <ion-card-title>{{ currentLang == 'en' ? itm.title : itm.title_ar }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{ currentLang == 'en' ? itm.description : itm.description_ar }}
+  </ion-card-content>
+</ion-card>
+<div class="empty-search" *ngIf="search != '' && filterEvents.length == 0">
+  <app-explore-container name="{{'noResultFound' | translate}}"></app-explore-container>
+</div>

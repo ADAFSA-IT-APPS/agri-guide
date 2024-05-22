@@ -1,0 +1,169 @@
+ion-toolbar {
+  --border-width: 0 !important;
+}
+
+ion-content {
+  --background: linear-gradient(0deg, #EEEEEE, transparent);
+}
+ion-content .main {
+  background-size: cover;
+  background-position: bottom;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+ion-content .main .header .logo {
+  width: 100px;
+  margin: auto;
+  padding: 10px;
+}
+ion-content .main .header .content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--ion-color-secondary);
+  margin: auto;
+}
+ion-content .main .header .content ion-label {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+ion-content .main .header .content ion-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+ion-content .main .middle ion-text {
+  font-size: 14px;
+  color: var(--ion-color-secondary);
+}
+ion-content .main .middle .lng-switcher {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 16px;
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+ion-content .main .middle .lng-switcher div {
+  padding: 10px 16px;
+  background: #fff;
+}
+ion-content .main .middle .lng-switcher div.selected {
+  background: var(--ion-color-primary);
+}
+ion-content .main .middle .lng-switcher div:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+ion-content .main .middle .lng-switcher div:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+ion-content .main .footer .guest {
+  text-align: center;
+}
+ion-content .main .footer .guest ion-label {
+  color: var(--ion-color-secondary);
+  text-decoration: underline !important;
+}
+ion-content .main .footer .adafsa-logo {
+  margin: 30px auto 16px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+ion-content .main .footer .login ion-button {
+  height: 48px;
+  min-width: 220px;
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+ion-content .main .footer .register {
+  text-align: center;
+  margin-top: 50px;
+}
+ion-content .main .footer .register ion-text {
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+
+#arrowAnim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrows {
+  width: 40px;
+}
+
+.arrow {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid;
+  border-color: white transparent transparent white;
+  transform: rotate(135deg);
+}
+
+.arrowSliding {
+  position: absolute;
+  -webkit-animation: slide 4s linear infinite;
+  animation: slide 4s linear infinite;
+}
+
+.delay1 {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.delay2 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.delay3 {
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s;
+}
+
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-1rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-1rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}/*# sourceMappingURL=login-info.page.css.map */

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{currentLang == 'en' ? details.categories?.name : details.categories?.name_ar}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close('')">
+        <ion-icon color="primary" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="sub-title ion-text-center ion-padding-vertical">
+    <ion-text>{{currentLang == 'en' ? details?.title : details?.title_ar}}</ion-text>
+  </div>
+  <ion-list class="ion-padding">
+    <ion-item class="ion-no-padding" *ngFor="let item of details.sections" (click)="close(item)">
+          <ion-label class="ion-padding-horizontal">
+            <h2>{{currentLang == 'en' ? item.heading : item.heading_ar}}</h2>
+          </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

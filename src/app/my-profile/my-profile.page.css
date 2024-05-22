@@ -1,0 +1,162 @@
+ion-toolbar {
+  --border-width: 0px !important;
+}
+
+.adafsa-logo {
+  margin: 30px auto 16px;
+  max-width: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+ion-footer {
+  height: 40px;
+}
+ion-footer .version {
+  font-size: 0.6rem;
+  opacity: 0.6;
+}
+
+.guest-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.guest-wrapper ion-button {
+  height: 48px;
+  min-width: 220px;
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+.guest-wrapper ion-label {
+  text-align: center;
+  text-decoration: underline;
+}
+.guest-wrapper ion-img {
+  max-width: 120px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.no-farm {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  margin-top: 10px;
+}
+
+ion-segment {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+ion-segment ion-segment-button {
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: capitalize;
+  --indicator-height: 4px;
+}
+ion-segment ion-segment-button::part(indicator-background) {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+ion-segment ion-segment-button ion-label {
+  color: #332519;
+}
+
+.images {
+  margin-top: 10px;
+}
+
+.image-list ion-img::part(image) {
+  height: 150px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.profile-wrapper .profile-details {
+  background: #ffffff;
+  padding: 16px;
+}
+.profile-wrapper .profile-details .profile-pic {
+  max-width: 100px;
+  margin: auto;
+}
+.profile-wrapper .profile-details .profile-pic img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.profile-wrapper .profile-details .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile-wrapper .profile-details .info ion-label {
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+.profile-wrapper .profile-details .info ion-label h2 {
+  font-weight: 500;
+}
+.profile-wrapper .profile-details .info ion-text {
+  text-transform: capitalize;
+}
+.profile-wrapper .farm-details .farm-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-wrapper .farm-details .farm-title h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.profile-wrapper .farm-details .farm-title ion-icon {
+  font-size: 1.6rem;
+}
+.profile-wrapper .farm-details .empty-farm {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  background: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ion-color-secondary);
+}
+.profile-wrapper .farm-details .farm-list ion-item::part(native) {
+  padding-left: 0 !important;
+}
+.profile-wrapper .farm-details .farm-list ion-item.selected .data {
+  opacity: 1 !important;
+}
+.profile-wrapper .farm-details .farm-list ion-item .farm-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.profile-wrapper .farm-details .farm-list ion-item .farm-wrapper .delete-farm {
+  font-size: 1.6rem;
+}
+.profile-wrapper .farm-details .farm-list ion-item .farm-wrapper .data {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  flex-grow: 1;
+  opacity: 0.7;
+}
+.profile-wrapper .farm-details .farm-list ion-item .farm-wrapper .data ion-label {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}/*# sourceMappingURL=my-profile.page.css.map */

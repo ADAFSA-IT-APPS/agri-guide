@@ -1,0 +1,48 @@
+<ion-content class="ion-padding">
+  <div class="main">
+    <div class="header">
+      <div class="logo">
+        <ion-img src="./assets/icon.svg"></ion-img>
+      </div>
+      <div class="content">
+        <ion-img *ngIf="lang == 'en'" class="ion-margin-top" src="./assets/logo-text.svg"></ion-img>
+        <ion-img *ngIf="lang == 'ar'" class="ion-margin-top" src="./assets/logo-text-ar.svg"></ion-img>
+        <ion-text>{{"abudhabiAgricultureFoodSafetyAuthority" | translate}}</ion-text>
+      </div>
+    </div>
+    <div class="middle">
+      <ion-text>{{"selectYourPreferredLanguage" | translate}}</ion-text>
+      <div class="lng-switcher" dir="ltr">
+        <div (click)="changeLng('en')" [ngClass]="{'selected': lang == 'en'}">
+          En
+        </div>
+        <div (click)="changeLng('ar')" [ngClass]="{'selected': lang == 'ar'}">
+          Ar
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="login ion-text-center">
+        <ion-button color="primary" [routerLink]="['/adafsa-login']">{{"ADAFSALogin" | translate}}
+        </ion-button>
+        <!-- <ion-button color="primary" [routerLink]="['/member-login']">{{"guestLogin" | translate}}
+        </ion-button> -->
+        <div class="ion-margin-top">
+          <div class="guest" (click)="guestVisitor()">
+            <ion-label>{{"continueAsGuestVisitor" | translate}}</ion-label>
+          </div>
+        </div>
+        <div class="ion-margin-top adafsa-logo">
+          <ion-img src="./assets/ADAFSA-logo.png"></ion-img>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" (click)="goToRegister()">
+      {{"registration" | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

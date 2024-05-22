@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"editProfile" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="main">
+    <form [formGroup]="editForm" novalidate>
+    <div class="content">
+      <div class="logo">
+        <img *ngIf="image" (click)="selectImage()" [src]="image" onError="this.src='./assets/user.svg'" src="./assets/guest-logo.svg" />
+        <img *ngIf="!image" (click)="selectImage()" [src]="path + profileData?.picture" onError="this.src='./assets/user.svg'" src="./assets/guest-logo.svg" />
+      </div>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"name" | translate}}</ion-label>
+        <ion-input type="text" formControlName="Name"></ion-input>
+      </ion-item>
+      <ion-text class="ion-padding-horizontal" color="danger" *ngIf="submitted && f.Name.invalid">
+        <span *ngIf="f.Name.errors.required">{{'required' | translate}}</span>
+      </ion-text>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"email" | translate}}</ion-label>
+        <ion-input type="email" formControlName="Email" disabled></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"mobileNumber" | translate}}</ion-label>
+        <ion-input placehoder="05x xxx xxxx" formControlName="Mobile" disabled></ion-input>
+      </ion-item>
+    </div>
+    <div class="footer">
+      <div class="login">
+        <ion-button color="primary" (click)="submit()">{{"update" | translate}}
+        </ion-button>
+      </div>
+    </div>
+  </form>
+  </div>
+</ion-content>

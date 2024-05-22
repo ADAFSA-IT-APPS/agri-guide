@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"membersLogin" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="main">
+    <div class="content">
+      <div class="logo">
+        <ion-img src="./assets/reg-logo.svg"></ion-img>
+      </div>
+      <div class="ion-text-center">
+        <ion-text color="secondary"><h3>{{"welcome" | translate}} Ahmed</h3></ion-text>
+      </div>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"mobileNumber" | translate}}</ion-label>
+        <ion-input placehoder="05x xxx xxxx"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"password" | translate}}</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"confirmPassword" | translate}}</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </div>
+    <div class="footer">
+      <div class="login">
+        <ion-button color="primary" [routerLink]="[ '/filter-subject']">{{"loginToAccount" | translate}}
+          <div class="arrows">
+            <div id="arrowAnim">
+              <div class="arrowSliding">
+                <div class="arrow"></div>
+              </div>
+              <div class="arrowSliding delay1">
+                <div class="arrow"></div>
+              </div>
+              <div class="arrowSliding delay2">
+                <div class="arrow"></div>
+              </div>
+              <div class="arrowSliding delay3">
+                <div class="arrow"></div>
+              </div>
+            </div>
+          </div>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

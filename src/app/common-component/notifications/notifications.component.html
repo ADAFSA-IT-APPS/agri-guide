@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon color="dark" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{'notifications' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="clear()" *ngIf="notificationList?.length > 0">
+        {{'clear' | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ng-container *ngFor="let item of notificationList">
+      <ion-item detail *ngIf="item.additionalData && item.additionalData?.type != 'chat'" (click)="goToDetails(item.additionalData)">
+        <div class="not-item">
+          <div class="icon">
+            <ion-icon *ngIf="item.additionalData?.type == 'topic'" name="ic-topic"></ion-icon>
+            <ion-icon *ngIf="item.additionalData?.type == 'event'" name="ic-cal"></ion-icon>
+          </div>
+          <div class="details">
+            <ion-label>{{item.body}}</ion-label>
+            <ion-text class="time">{{item.date | date: 'dd MMM, yyyy hh:mm a'}}</ion-text>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item *ngIf="!item.additionalData">
+        <div class="not-item">
+          <div class="icon">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </div>
+        <div class="details">
+          <ion-label>{{item.body}}</ion-label>
+          <ion-text class="time">{{item.date | date: 'dd MMM, yyyy hh:mm a'}}</ion-text>
+        </div>
+        </div>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+  <div *ngIf="notificationList.length == 0 || !notificationList">
+    <app-explore-container name="{{'nothingToShow' | translate}}"></app-explore-container>
+  </div>
+</ion-content>

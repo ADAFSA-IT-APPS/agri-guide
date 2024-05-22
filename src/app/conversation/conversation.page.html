@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="" defaultHref="/tabs/chat"></ion-back-button>
+    </ion-buttons>
+    <ion-avatar slot="start" class="contact-avatar">
+      <img [src]="chatTo?.profilePic" onError="this.src='./assets/user.svg'">
+    </ion-avatar>
+    <ion-title class="lang-{{currentLang}}">
+      <ion-label>
+        <h2>{{ chatTo.name }}</h2>
+        <small>{{ chatTo.isOnline }}</small>
+      </ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-bottom">
+  <ion-infinite-scroll threshold="100px" position="top" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content disabled="true" loadingSpinner="bubbles" loadingText="Loading chat...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="chat-container">
+    <div *ngFor="let item of oldMsgs">
+      <div *ngFor="let message of item; let i=index" class="chat-bubble old-bubble"
+        [ngClass]="[message.cstatus, message.media.type]">
+        <img [src]="path + message.media.url" onError="this.src='./assets/no-image.svg'" *ngIf="message.media.type == 'image'"
+          (click)="showPreview(path + message.media.url)" />
+        <h6 *ngIf="message.media.type == 'text' || message.media.type == 'image'">{{ message.message }}</h6>
+        <div class="topic-details" *ngIf="message.media.type == 'topic'">
+          <div class="topic-image">
+            <img [src]="path + message.media.topics.banner" onError="this.src='./assets/no-image.svg'">
+          </div>
+          <div class="topic-content">
+            <h6>{{ currentLang == 'en' ? message.media.topics.title : message.media.topics.title_ar }}</h6>
+          </div>
+        </div>
+        <p>{{ message.createdOn | date: 'EEE MMM, yyyy hh:mm a' }}</p>
+      </div>
+    </div>
+    <div *ngFor="let message of messages; let i=index" class="chat-bubble" [ngClass]="[message.status, message.type]">
+      <img [src]="path + message.url" onError="this.src='./assets/no-image.svg'" *ngIf="message.type == 'image'" (click)="showPreview(path + message.url)" />
+      <h6 *ngIf="message.type == 'text' || message.type == 'image'">{{ message.text }}</h6>
+      <div class="topic-details" *ngIf="message.type == 'topic'">
+        <div class="topic-image">
+          <img [src]="path + message.url" onError="this.src='./assets/no-image.svg'">
+        </div>
+        <div class="topic-content">
+          <h6>{{ message.text }}</h6>
+        </div>
+      </div>
+      <p>{{ message.createdOn | date: 'EEE MMM, yyyy hh:mm a' }}</p>
+    </div>
+  </div>
+  <!-- <input type="file" name="uploadImage" id="uploadImage" (change)="upload($event.target.files)"> -->
+</ion-content>
+<ion-footer>
+  <div class="chat-controls">
+    <ion-row class="bg-white ion-align-items-center footer">
+      <ion-col size="2" class="ion-no-padding">
+        <p class="ion-text-center icon-controls">
+          <ion-icon mode="ios" name="add" *ngIf="!showOptions" (click)="selectImage()"></ion-icon>
+          <ion-icon mode="ios" color="danger" name="close" *ngIf="showOptions"></ion-icon>
+        </p>
+      </ion-col>
+      <ion-col size="8" class="ion-no-padding">
+        <ion-list lines="none" class="ion-no-padding">
+          <ion-item>
+            <ion-input placeholder="Type your message" type="text" [(ngModel)]="message"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="2" class="ion-no-padding">
+        <p class="ion-text-center icon-controls">
+          <ion-icon mode="ios" name="send" class="text-primary" (click)="sendMsgType('text')"></ion-icon>
+        </p>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>

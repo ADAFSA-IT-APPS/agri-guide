@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{'back' | translate}}" color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"ADAFSAMember" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="main">
+    <div class="content">
+      <div class="logo">
+        <ion-img src="./assets/guest-logo.svg"></ion-img>
+      </div>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"EmirtesID" | translate}}*</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-text class="helper" *ngIf="state == '2'">{{"youWillReceiveTheVarifcationCode" | translate}}</ion-text>
+
+      <ion-item *ngIf="state == '2'" class="ion-margin-vertical ion-padding-top ion-text-center">
+        <ion-label position="stacked" color="secondary">{{"verificationCode" | translate}}</ion-label>
+        <ion-input type="number" placehoder="xxx xxx"></ion-input>
+      </ion-item>
+
+      <div class="resend-code" *ngIf="state == '2'">
+        <ion-text>{{"receiveTheCode" | translate}} </ion-text>
+        <ion-text>{{"resend" | translate}}</ion-text>
+      </div>
+
+    </div>
+    <div class="footer">
+      <div class="login">
+        <ion-button color="primary" *ngIf="state == '1'" (click)="sendOTP()">{{"sendOtp" | translate}}
+          
+        </ion-button>
+        <ion-button color="primary" *ngIf="state == '2'" [routerLink]="[ '/adafsa-member-login']">{{"loginToAccount" | translate}}
+          <div class="arrows">
+            <div id="arrowAnim">
+              <div class="arrowSliding">
+                <div class="arrow"></div>
+              </div>
+              <div class="arrowSliding delay1">
+                <div class="arrow"></div>
+              </div>
+              <div class="arrowSliding delay2">
+                <div class="arrow"></div>
+              </div>
+              <div class="arrowSliding delay3">
+                <div class="arrow"></div>
+              </div>
+            </div>
+          </div>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

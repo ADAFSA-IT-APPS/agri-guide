@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"guestAccount" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="main">
+    <form [formGroup]="registerForm" novalidate>
+    <div class="content">
+      <div class="logo">
+        <ion-img src="./assets/guest-logo.svg"></ion-img>
+      </div>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"name" | translate}}</ion-label>
+        <ion-input type="text" formControlName="Name"></ion-input>
+      </ion-item>
+      <ion-text class="ion-padding-horizontal" color="danger" *ngIf="submitted && f.Name.invalid">
+        <span *ngIf="f.Name.errors.required">{{'required' | translate}}</span>
+      </ion-text>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"email" | translate}} ({{"optional" | translate}})</ion-label>
+        <ion-input type="email" formControlName="Email"></ion-input>
+      </ion-item>
+      
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"mobileNumber" | translate}}</ion-label>
+        <ion-input placehoder="05x xxx xxxx" formControlName="Mobile"></ion-input>
+      </ion-item>
+      <ion-text class="ion-padding-horizontal" color="danger" *ngIf="submitted && f.Mobile.invalid">
+        <span *ngIf="f.Mobile.errors.required">{{'required' | translate}}</span>
+        <span *ngIf="f.Mobile.errors?.pattern">{{'invalidPhone' | translate}}</span>
+      </ion-text>
+      <ion-text class="ion-padding-horizontal" color="danger" *ngIf="f.Mobile.errors?.existingMobile">
+        <span>{{'mobileExists' | translate}}</span>
+      </ion-text>
+      <ion-item class="ion-margin-vertical">
+        <ion-label position="stacked" color="secondary">{{"enterPassword" | translate}}</ion-label>
+        <ion-input type="password" formControlName="Password"></ion-input>
+      </ion-item>
+      <ion-text class="ion-padding-horizontal" color="danger" *ngIf="submitted && f.Password.invalid">
+        <span *ngIf="f.Password.errors.required">{{'required' | translate}}</span>
+      </ion-text>
+    </div>
+    <div class="footer">
+      <div class="login">
+        <ion-button color="primary" (click)="submit()">{{"registerAccount" | translate}}
+        </ion-button>
+      </div>
+    </div>
+  </form>
+  </div>
+</ion-content>

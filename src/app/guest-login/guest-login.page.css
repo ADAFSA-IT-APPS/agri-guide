@@ -1,0 +1,119 @@
+ion-toolbar {
+  --border-width: 0 !important;
+}
+ion-toolbar ion-title {
+  font-weight: bold;
+}
+
+ion-content .content ion-item::part(native) {
+  padding: 0;
+}
+ion-content .logo {
+  width: 100px;
+  margin: auto;
+  padding: 10px;
+}
+ion-content .forgot {
+  padding: 16px;
+  font-size: 0.7rem;
+}
+ion-content .footer {
+  margin-top: 60px;
+  text-align: center;
+}
+ion-content .footer .login ion-button {
+  height: 48px;
+  min-width: 250px;
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+ion-content .footer .register {
+  text-align: center;
+  margin-top: 50px;
+}
+ion-content .footer .register ion-text {
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+
+.label-stacked {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#arrowAnim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrows {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.arrow {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid;
+  border-color: white transparent transparent white;
+  transform: rotate(135deg);
+}
+
+.arrowSliding {
+  position: absolute;
+  -webkit-animation: slide 4s linear infinite;
+  animation: slide 4s linear infinite;
+}
+
+.delay1 {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.delay2 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.delay3 {
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s;
+}
+
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-1rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-1rem);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}/*# sourceMappingURL=guest-login.page.css.map */

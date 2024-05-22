@@ -1,0 +1,120 @@
+.content {
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.content .header {
+  margin-top: 64px;
+}
+.content .header .title h2 {
+  color: #5B666F;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  animation: fadeIn 4s;
+  -webkit-animation: fadeIn 4s;
+  -moz-animation: fadeIn 4s;
+  -o-animation: fadeIn 4s;
+  -ms-animation: fadeIn 4s;
+}
+.content .header img {
+  height: 30px;
+  margin-bottom: 8px;
+  animation: fadeIn 4s;
+  -webkit-animation: fadeIn 4s;
+  -moz-animation: fadeIn 4s;
+  -o-animation: fadeIn 4s;
+  -ms-animation: fadeIn 4s;
+}
+.content .header img.adafsa {
+  height: 120px !important;
+}
+.content .footer {
+  transform: scale(2);
+  margin-bottom: -120px;
+}
+.content .footer svg #farmer {
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  animation: slide-in 1s forwards;
+  -webkit-animation: slide-in 1.8s forwards;
+}
+.content .footer svg #land-right {
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  animation: slide-in 1s forwards;
+  -webkit-animation: slide-in 1s forwards;
+}
+.content .footer svg #land-left {
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  animation: slide-in 1.2s forwards;
+  -webkit-animation: slide-in 1.2s forwards;
+}
+.content .footer svg #land-center {
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  animation: slide-in-y 1.4s forwards;
+  -webkit-animation: slide-in-y 1.4s forwards;
+}
+.content .footer svg #bushes, .content .footer svg #front-bushes {
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  animation: slide-in-y 1s forwards;
+  -webkit-animation: slide-in-y 1.6s forwards;
+}
+.content .footer svg #palm, .content .footer svg #camel, .content .footer svg #hen, .content .footer svg #hen, .content .footer svg #search, .content .footer svg #cow, .content .footer svg #leaf1, .content .footer svg #plant1 {
+  opacity: 0;
+  animation: fadeIn 3s forwards;
+  -webkit-animation: fadeIn 3s forwards;
+  -moz-animation: fadeIn 3s forwards;
+  -o-animation: fadeIn 3s forwards;
+  -ms-animation: fadeIn 3s forwards;
+}
+
+@-webkit-keyframes slide-in {
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+@keyframes slide-in {
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+@-webkit-keyframes slide-in-y {
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+@keyframes slide-in-y {
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=splash-screen.page.css.map */

@@ -1,0 +1,180 @@
+ion-toolbar {
+    --border-width: 0 !important;
+}
+
+    .banner {
+        position: relative;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: rgb(36 41 51 / 0.2);
+            //background: linear-gradient(180deg, #242933 0%, transparent 50%);
+            content: '';
+        }
+
+        img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .title {
+            font-size: 2.4rem;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 16px;
+        border-bottom: 1px solid #F3F3F3;
+        padding: 16px 0;
+        ion-label{
+            direction: ltr;
+        }
+    }
+
+    .action-btns {
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+
+        ion-icon {
+            padding: 0 8px;
+        }
+    }
+
+    .care-wrapper {
+        img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .pest-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            ion-icon {
+                font-size: 1.6rem;
+            }
+
+        }
+    }
+
+    .doc-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .doc-type {
+            font-size: 2rem;
+            background: #D8D8D8;
+            padding: 16px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .title {
+            ion-label {
+                font-weight: 500;
+                font-size: 1.2rem;
+            }
+
+            ion-icon {}
+        }
+    }
+
+    .inner-details {
+        section {
+            border-bottom: 1px solid #F3F3F3;
+            .event-details{
+                ion-item{
+                    --background: #F5F5F5;
+                    margin-bottom: 10px;
+                    ion-text{
+                        display: flex;
+                        direction: ltr;
+                        ion-icon{
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+            }
+            .join-event {
+                text-align: center;
+                padding: 10px;
+                background: var(--ion-color-primary);
+                &.expired{
+                    background: var(--ion-color-danger);
+                }
+                ion-label{
+                    color: #fff;
+                    h1{
+                        font-size: 1.2rem;
+                    }
+                }
+                ion-text{
+                    font-size: .8rem;
+                }
+            }
+            .description {
+                line-height: 1.8;
+                text-align: justify !important;
+            }
+
+            .media {
+                ion-grid {
+                    padding: 0px;
+                    --ion-grid-column-padding: 5px;
+                }
+
+                .media-item {
+                    position: relative;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        //border-radius: 10px;
+                        height: 160px;
+                        object-fit: cover;
+                    }
+
+                    .overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba($color: #fff, $alpha: .6);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        h1 {
+                            font-size: 44px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }

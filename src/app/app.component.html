@@ -1,0 +1,58 @@
+<ion-app>
+  <ion-menu side="start" type="push" contentId="main" swipeGesture="false">
+    <ion-header class="ion-padding" mode="ios">
+      <ion-toolbar mode="ios">
+        <ion-title class="ion-padding-start">{{"filterCalendar" | translate}}</ion-title>
+        <ion-icon slot="end" color="secondary" name="ic-filter"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding-horizontal">
+      <ion-list mode="md" lines="none">
+        <ion-radio-group value="all" (ionChange)="filterChange($event)">
+          <ion-item>
+            <ion-icon name="list"></ion-icon>
+            <ion-label>{{"all" | translate}} {{"calendar" | translate}}</ion-label>
+            <ion-radio slot="end" value="all"></ion-radio>
+          </ion-item>
+          <ion-item *ngFor="let item of farming" class="filter-cat">
+            <ion-img [src]="path + item.icon"></ion-img>
+            <ion-label>{{item.type}} {{"calendar" | translate}}</ion-label>
+            <ion-radio slot="end" [value]="item.type"></ion-radio>
+          </ion-item>
+          <!-- <ion-item>
+            <ion-icon name="agri"></ion-icon>
+            <ion-label>{{"Agriculture" | translate}} {{"calendar" | translate}}</ion-label>
+            <ion-radio slot="end" value="agri"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="farm"></ion-icon>
+            <ion-label>{{"Farming" | translate}} {{"calendar" | translate}}</ion-label>
+            <ion-radio slot="end" value="farm"></ion-radio>
+          </ion-item> -->
+        </ion-radio-group>
+        <div class="fav-item">
+          <ion-item (click)="goToFav()" [routerLink]="['/favorite-events']" detail>
+            <ion-label>{{"favoriteEvents" | translate}}</ion-label>
+          </ion-item>
+        </div>
+      </ion-list>
+      <!-- <ion-list mode="md" lines="none">
+        <ion-item *ngFor="let item of farming">
+          <ion-thumbnail slot="start">
+            <img [src]="'http://farmerapp.eovstg.com'+item.icon" />
+          </ion-thumbnail>
+          <ion-label>{{item.name}}</ion-label>
+          <ion-checkbox slot="end" mode="md"></ion-checkbox>
+        </ion-item>
+      </ion-list> -->
+    </ion-content>
+    <!-- <ion-footer mode="ios">
+      <ion-toolbar mode="ios" color="primary">
+        <ion-buttons>
+          <ion-button expand="block">Filter</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer> -->
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

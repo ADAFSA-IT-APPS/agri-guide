@@ -1,0 +1,36 @@
+ion-toolbar {
+    --border-width: 0 !important;
+    --background: #69737B;
+}
+
+ion-content {
+    --background: #69737B;
+    --color: #fff;
+
+    ion-list {
+        background: transparent;
+        padding-top: 0;
+
+        ion-item {
+            --background: transparent;
+            --color: #fff;
+            --inner-padding-end: 0;
+
+            div {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                flex-direction: column;
+
+                img {
+                    width: 100%;
+                }
+
+                ion-text {
+                    margin-bottom: 20px;
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+}

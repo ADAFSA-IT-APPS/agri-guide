@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'favoriteEvents' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="!guest">
+  <ion-card *ngFor="let itm of profileData.favouriteEventsList" class="event-details" (click)="goToEvent(itm.id)">
+    <img [src]="path + itm.banner" onError="this.src='./assets/no-image.svg'"/>
+    <ion-card-header>
+      <ion-card-subtitle>{{itm.startDate | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+      <ion-card-title>{{ itm.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ itm.description }}
+    </ion-card-content>
+  </ion-card>
+  <div *ngIf="!profileData.favouriteEventsList">
+    <app-explore-container name="{{'noResultFound' | translate}}"></app-explore-container>
+  </div>
+</ng-container>
+<div *ngIf="guest">
+  <app-explore-container name="{{'noResultFound' | translate}}"></app-explore-container>
+</div>
+</ion-content>

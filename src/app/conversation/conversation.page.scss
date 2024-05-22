@@ -1,0 +1,165 @@
+ion-toolbar {
+    --border-color: transparent;
+    //height: 60px;
+    align-items: center;
+    display: flex;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+ion-title {
+    &.lang-ar{
+        text-align: right;
+    }
+    &.lang-en{
+        text-align: left;
+    }
+    margin-left: 10px;
+
+    h2 {
+        font-weight: 500;
+        margin: 0;
+    }
+}
+
+ion-back-button {
+    color: #000;
+}
+
+
+
+.contact-avatar {
+    height: 40px;
+    width: 40px;
+    margin-left: 8px;
+}
+
+.icon-controls {
+    ion-icon {
+        font-size: 2rem;
+    }
+}
+
+
+ion-item {
+    --padding-start: 0px;
+}
+
+.chat-bubble {
+    width: auto;
+    max-width: 75%;
+    min-width: 25%;
+    border-radius: 25px;
+    padding: 8px 16px;
+    margin: 10px;
+    display: block;
+    clear: both;
+    position: relative;
+    margin-bottom: 0;
+    &.topic{
+        border-radius: 10px;
+        padding: 8px;
+    }
+
+    &.received {
+        background: #F5F5F5;
+        float: left;
+        p{
+            color: #000 !important;
+        }
+    }
+
+    &.send {
+        background: var(--ion-color-primary);
+        float: right;
+        text-align: left;
+        color: #fff;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .topic-details {
+        display: flex;
+        // align-items: center;
+        flex-direction: column;
+
+        .topic-image {
+            img {
+                border-radius: 10px;
+            }
+        }
+
+        .topic-content {
+        }
+    }
+
+    &.image {
+        padding: 8px;
+        border-radius: 10px;
+
+        img {
+            border-radius: 10px;
+        }
+    }
+
+    h6 {
+        margin: 0;
+        font-weight: 400;
+    }
+
+    p {
+        margin: 0;
+        margin-top: 4px;
+        font-size: 10px;
+        opacity: 0.6
+    }
+}
+
+.chat-container {
+    // height: calc(100% - 60px);
+    // padding-bottom: 30px;
+    // overflow: scroll;
+}
+
+
+::ng-deep .my-custom-class {
+    .modal-wrapper {
+        height: 70vh;
+        margin-top: auto;
+        border-top-right-radius: 33px;
+        border-top-left-radius: 33px;
+    }
+}
+
+::ng-deep .request-view-modal {
+    .modal-wrapper {
+        max-height: 320px;
+        min-height: max-content;
+        margin-top: auto;
+        border-top-right-radius: 33px;
+        border-top-left-radius: 33px;
+    }
+}
+
+::ng-deep .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+}
+
+::ng-deep .swiper-pagination-bullets {
+    bottom: 10px !important;
+}
+
+::ng-deep .swiper-pagination-bullet-active {
+    width: 8px;
+    height: 8px;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

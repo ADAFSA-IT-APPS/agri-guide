@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{"membersLogin" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="main">
+    <form [formGroup]="loginForm" novalidate>
+      <div class="content">
+        <div class="logo">
+          <ion-img src="./assets/login-logo.svg"></ion-img>
+        </div>
+        <ion-item class="ion-margin-vertical">
+          <ion-label position="stacked" color="secondary">{{"mobileNumber" | translate}}</ion-label>
+          <ion-input placehoder="05x xxx xxxx" formControlName="username"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="submitted && f.username.invalid">
+          <span *ngIf="f.username.errors.required">{{'required' | translate}}</span>
+          <span *ngIf="f.username.errors?.pattern">{{'invalidPhone' | translate}}</span>
+        </ion-text>
+        <ion-item class="ion-margin-vertical">
+          <ion-label position="stacked" color="secondary">{{"password" | translate}}</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="submitted && f.password.invalid">
+          <span *ngIf="f.password.errors?.required">{{'required' | translate}}</span>
+        </ion-text>
+        <div>
+          <ion-text color="secondary" class="forgot" (click)="goToForgot()">{{"forgotYourPassword" | translate}}</ion-text>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="login">
+          <ion-button color="primary" (click)="submit()">{{"loginToAccount" | translate}}
+            <div class="arrows">
+              <div id="arrowAnim">
+                <div class="arrowSliding">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay1">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay2">
+                  <div class="arrow"></div>
+                </div>
+                <div class="arrowSliding delay3">
+                  <div class="arrow"></div>
+                </div>
+              </div>
+            </div>
+          </ion-button>
+          <ion-text color="dark" class="forgot" (click)="guestVisitor()">{{"continueAsGuestVisitor" | translate}}</ion-text>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

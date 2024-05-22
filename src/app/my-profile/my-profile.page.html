@@ -1,0 +1,127 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{'myAccount' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!guest">
+    <ion-segment [(ngModel)]="profileTab" mode="md" color="primary">
+      <ion-segment-button value="1">
+        <ion-label>{{'profile' | translate}}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>{{'settings' | translate}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <div class="ion-padding">
+      <div *ngIf="profileTab == '1'">
+        <div class="profile-wrapper">
+          <div class="profile-details">
+            <div class="ion-text-right">
+              <ion-text color="secondary" [routerLink]="['/profile-details']">{{'view' | translate}}</ion-text>
+            </div>
+            <div class="profile-pic ion-text-center">
+              <img class="img-responsive" [src]="path + profileData?.picture" onError="this.src='./assets/user.svg'" />
+            </div>
+            <div class="info ion-text-center">
+              <ion-label color="secondary">
+                <h2>{{profileData?.users.name}}</h2>
+              </ion-label>
+            </div>
+          </div>
+          <div class="farm-details ion-margin-top">
+            <div class="farm-title">
+              <ion-label color="dark" class="ion-text-bold">
+                <h2>{{"location" | translate}}</h2>
+              </ion-label>
+              <ion-icon (click)="addFarm()" color="dark" name="ic-add"></ion-icon>
+            </div>
+            <div class="empty-farm" *ngIf="!profileData.farms && profileData.farms == null">
+              <ion-text>{{'noFarms' | translate}}</ion-text>
+            </div>
+            <div class="farm-list" *ngIf="profileData.farms">
+              <ion-list class="ion-margin-top">
+                <ion-item *ngFor="let item of profileData.farms"
+                  [ngClass]="item.id == selectedFarm.id ? 'selected': ''">
+                  <div class="farm-wrapper">
+                    <div class="data" (click)="showImage(item)">
+                      <ion-label>{{item.title}}</ion-label>
+                      <div class="location">
+                        <ion-icon name="location-outline"></ion-icon>
+                        <ion-text>{{item.address}}</ion-text>
+                      </div>
+                    </div>
+                    <div class="delete-farm">
+                      <ion-icon color="danger" (click)="deleteFarm(item)" name="trash"></ion-icon>
+                    </div>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </div>
+            <div class="images">
+              <div class="farm-title" *ngIf="farmSelected">
+                <ion-label color="dark" class="ion-text-bold">
+                  <h2>{{"farmImage" | translate}}</h2>
+                </ion-label>
+                <ion-icon (click)="editFarm(selectedFarm)" color="secondary" name="ic-add"></ion-icon>
+              </div>
+              <div class="image-list" *ngIf="farmSelected && selectedFarm.gallery.length > 0">
+                <ion-grid>
+                  <ion-row class="w-100">
+                    <ion-col size="6" *ngFor="let item of selectedFarm.gallery" (click)="openImages(selectedFarm)">
+                      <ion-img [src]="path + item.url"></ion-img>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+              <div class="no-farm" *ngIf="farmSelected && selectedFarm.gallery.length == 0">
+                <ion-text>
+                  <strong>{{'noFarmImages' | translate}}</strong>
+                </ion-text>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="profileTab == '2'">
+        <ion-list>
+          <ion-item>
+            <ion-label>{{'language' | translate}}</ion-label>
+            <ion-select [(ngModel)]="lang" (ionChange)="changeLng()" interface="popover">
+              <ion-select-option value="en">English</ion-select-option>
+              <ion-select-option value="ar">عربى</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="none" (click)="logout()">
+            {{'logout' | translate}}
+          </ion-item>
+        </ion-list>
+        <div class="ion-margin-top adafsa-logo">
+          <ion-img src="./assets/ADAFSA-logo.svg"></ion-img>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="guest" class="guest-wrapper">
+    <div>
+    <div class="ion-margin-bottom ion-text-center">
+      <ion-img src="./assets/login-logo.svg"></ion-img>
+    </div>
+    <div class="ion-text-center">
+      <ion-text color="danger">{{'featureNotAvailableForGuestUser' | translate}}</ion-text>
+      <ion-button (click)="goLogin()" class="ion-margin-top" size="sm" color="primary">{{'loginToAccount' | translate}}
+      </ion-button>
+    </div>
+  </div>
+    <ion-label (click)="goLogin()">
+      <h2>{{"changeLanguage" | translate}}</h2>
+    </ion-label>
+  </div>
+</ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-title class="ion-text-center version">
+      Version: {{ app_version }} {{app_code ? '(' + app_code + ')' : ''}}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

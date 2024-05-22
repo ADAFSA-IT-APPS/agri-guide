@@ -1,0 +1,76 @@
+ion-menu{
+    ion-toolbar{
+        --border-width: 0px !important;
+        ion-title{
+            text-align: left;
+        }
+    }
+    ion-list{
+        border-top: 1px solid #F3F3F3;
+        ion-item{
+            &::part(native){
+                --padding-start: 0;
+            }
+            &.filter-cat{
+                ion-img{
+                    &::part(image){
+                        width: 36px;
+                    height: 36px;
+                    object-fit: contain;
+                    }
+                }
+            }
+            ion-label{
+                margin-left: 8px;
+                font-size: .8rem;
+            }
+        }
+        .fav-item{
+            border-top: 1px solid rgb(112 112 112 / .2);
+            margin-top: 10px;
+            ion-label{
+                font-size: 1rem;
+                
+            }
+        }
+    }
+    ion-checkbox{
+        --size: 24px;
+        --checkmark-color: var(--ion-color-secondary);
+        --border-radius: 5px;
+        --background: #F3F3F3;
+        --border-color: transparent;
+        --border-width: 6px;
+    }
+}
+
+ion-footer{
+    ion-button{
+        width: 100%;
+    }
+}
+
+
+ion-radio.radio-checked::part(container){
+    background: var(--ion-color-primary) !important;
+    border-color: var(--ion-color-primary) !important;
+}
+ion-radio-group{
+    ion-item{
+        ion-icon{
+            font-size: 36px;
+            color: #000;
+        }
+    }
+}
+
+ion-radio.radio-checked::part(mark){
+    width: 8px !important;
+    height: 8px !important;
+    background: var(--ion-color-secondary) !important;
+}
+
+ion-radio::part(container){
+    background: #F3F3F3;
+    border-color: #F3F3F3;
+}

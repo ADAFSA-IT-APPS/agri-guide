@@ -1,0 +1,58 @@
+<div class="header" (click)="toggleAccordion(this.calendarData, getID(name))">
+  <div>
+    <h2 [ngClass]="calendarData.isOpen ? 'active' : 'inactive'">
+      {{ name }}
+    </h2>
+    <div class="highlights">
+      <div class="events">
+        <ion-text>{{calendarData.length}} {{'events' | translate}}</ion-text>
+      </div>
+      <div class="highlight">
+        <ion-text color="danger">{{bugs.length}} {{'highlights' | translate }}</ion-text>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ion-icon *ngIf="calendarData.isOpen" name="chevron-up-outline"></ion-icon>
+    <ion-icon *ngIf="!calendarData.isOpen" name="chevron-down-outline"></ion-icon>
+  </div>
+</div>
+<div [ngClass]="this.calendarData.isOpen ? 'active' : 'inactive'">
+  <div class="pest-wrapper" *ngIf="bugs.length > 0">
+    <div>
+      <ion-text>{{'TheMostCommonPestOfThisMonth' | translate}}</ion-text>
+    </div>
+    <div>
+      <ion-list class="ion-padding-bottom">
+        <ion-item class="ion-no-padding" detail *ngFor="let item of bugs" (click)="goToDetails(item.id)">
+          <div class="pest-details">
+            <img [src]="path + item.banner" onError="this.src='./assets/no-image.svg'"/>
+            <div>
+              <ion-label>{{currentLang == 'en' ? item.title : item.title_ar}}</ion-label>
+              <!-- <ion-text>{{item.}}</ion-text> -->
+            </div>
+          </div>
+        </ion-item>
+      
+      </ion-list>
+    </div>
+  </div>
+  <ng-container *ngIf="calendarData.length > 0 else noEvents">
+  <div *ngFor="let item of calendarData" class="month-details">
+    <div class="sub-title">
+      <span class="day">{{getDay(fetchPropertyName(item))}}</span>
+      <span class="date">{{getDate(fetchPropertyName(item))}}</span>
+    </div>
+    <div *ngFor="let itm of item[fetchPropertyName(item)]" class="event-details" (click)="goToEvent(itm.id)">
+      <img [src]="path + itm.banner" onError="this.src='./assets/no-image.svg'"/>
+      <h3>{{ currentLang == 'en' ? itm.title : itm.title_ar }}</h3>
+      <p>{{ currentLang == 'en' ? itm.description : itm.description_ar }}</p>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noEvents>
+  <div class="ion-padding">
+    <ion-text>{{'noEventsFound' | translate}}</ion-text>
+  </div>
+</ng-template>
+</div>

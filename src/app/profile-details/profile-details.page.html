@@ -1,0 +1,243 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'profile' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!guest">
+    <div class="main ion-padding">
+      <form [formGroup]="registerForm" novalidate>
+        <div class="content">
+          <ion-item-divider mode="ios" class="ion-margin-top">
+            <ion-label>{{"individualRegistration" | translate}}</ion-label>
+          </ion-item-divider>
+
+          <ion-list>
+            <ion-label position="stacked" color="secondary">{{"prefix" | translate}}</ion-label>
+            <ion-radio-group mode="md" formControlName="PrefixName" class="gender-wrapper">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="6"
+                    *ngIf="userInfo?.DoLoginResult.UserAccountDetails.IndividualInfo.PrefixName == 2600">
+                    <ion-item lines="none" class="item-radio-checked ion-no-padding">
+                      <ion-label>{{"mr" | translate}}</ion-label>
+                      <!-- <ion-radio slot="start" value="2600"></ion-radio> -->
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6"
+                    *ngIf="userInfo?.DoLoginResult.UserAccountDetails.IndividualInfo.PrefixName == 2601">
+                    <ion-item lines="none" class="item-radio-checked ion-no-padding">
+                      <ion-label>{{"mrs" | translate}}</ion-label>
+                      <!-- <ion-radio slot="start" value="2601"></ion-radio> -->
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-radio-group>
+          </ion-list>
+
+          <!-- First Name Ar -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"firstNameAr" | translate}}</ion-label>
+            <ion-input dir="rtl" type="text" formControlName="FirstName" readonly></ion-input>
+          </ion-item>
+
+          <!-- First Name En -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"firstNameEn" | translate}}</ion-label>
+            <ion-input type="text" formControlName="FirstName_En" readonly></ion-input>
+          </ion-item>
+
+
+          <!-- Second Name Ar -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"secondNameAr" | translate}}</ion-label>
+            <ion-input dir="rtl" type="text" formControlName="SecondName" readonly></ion-input>
+          </ion-item>
+
+          <!-- Second Name En -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"secondNameEn" | translate}}</ion-label>
+            <ion-input type="text" formControlName="SecondName_En" readonly></ion-input>
+          </ion-item>
+
+          <!-- Last Name Ar -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"familyNameAr" | translate}}</ion-label>
+            <ion-input dir="rtl" type="text" formControlName="LastName" readonly></ion-input>
+          </ion-item>
+
+          <!-- Last Name En -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"familyNameEn" | translate}}</ion-label>
+            <ion-input type="text" formControlName="LastName_En" readonly></ion-input>
+          </ion-item>
+
+          <!-- Gender -->
+          <ion-list>
+            <ion-label position="stacked" color="secondary">{{"gender" | translate}}</ion-label>
+            <ion-radio-group mode="md" formControlName="Gender" class="gender-wrapper">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="6"
+                    *ngIf="userInfo?.DoLoginResult.UserAccountDetails.IndividualInfo.Gender == true">
+                    <ion-item lines="none" class="item-radio-checked ion-no-padding">
+                      <ion-label>Male</ion-label>
+                      <!-- <ion-radio slot="start" value="true"></ion-radio> -->
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6"
+                    *ngIf="userInfo?.DoLoginResult.UserAccountDetails.IndividualInfo.Gender == false">
+                    <ion-item lines="none" class="ion-no-padding item-radio-checked">
+                      <ion-label>Female</ion-label>
+                      <!-- <ion-radio slot="start" value="false"></ion-radio> -->
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-radio-group>
+          </ion-list>
+
+          <!-- Nationality -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"nationality" | translate}}</ion-label>
+            <ng-container *ngFor="let item of nationalities">
+              <ion-text *ngIf="item.ID == registerForm.value.Nationality">{{item.NameEN}}</ion-text>
+            </ng-container>
+          </ion-item>
+
+
+          <!-- Marital Status -->
+          <ion-list>
+            <ion-label position="stacked" color="secondary">{{"maritalStatus" | translate}}</ion-label>
+            <ion-radio-group mode="md" formControlName="MaritalStatusID" class="gender-wrapper">
+              <ion-grid>
+                <ion-row>
+                  <ng-container *ngFor="let item of marital">
+                    <ion-col size="6" *ngIf="item.id == registerForm.value.MaritalStatusID">
+                      <ion-item lines="none" class="item-radio-checked ion-no-padding">
+                        <ion-label>{{item.name}}</ion-label>
+                        <!-- <ion-radio slot="start" [value]="item.id"></ion-radio> -->
+                      </ion-item>
+                    </ion-col>
+                  </ng-container>
+                </ion-row>
+              </ion-grid>
+            </ion-radio-group>
+          </ion-list>
+
+          <!-- Date of Birth -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"dob" | translate}}</ion-label>
+            <ion-datetime formControlName="BirthDate" readonly></ion-datetime>
+          </ion-item>
+
+          <!-- Identific Type -->
+          <ion-list>
+            <ion-label position="stacked" color="secondary">{{"applicationClass" | translate}}</ion-label>
+            <ion-radio-group mode="md" formControlName="IdentificType" value="89" class="gender-wrapper">
+              <ion-grid>
+                <ion-row>
+                  <ng-container *ngFor="let item of applicationClass">
+                    <ion-col size="6" *ngIf="item.id == registerForm.value.IdentificType">
+                      <ion-item lines="none" class="item-radio-checked ion-no-padding">
+                        <ion-label>{{item.name}}</ion-label>
+                        <ion-radio slot="start" [value]="item.id"></ion-radio>
+                      </ion-item>
+                    </ion-col>
+                  </ng-container>
+                </ion-row>
+              </ion-grid>
+            </ion-radio-group>
+          </ion-list>
+
+
+          <!-- Identification Number -->
+          <ion-item class="ion-margin-top">
+            <ion-label *ngIf="registerForm.value.IdentificType == '91' || registerForm.value.IdentificType == '95'"
+              position="stacked" color="secondary">{{"passportNumber" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+            <ion-label *ngIf="registerForm.value.IdentificType == '89' || registerForm.value.IdentificType == '90'"
+              position="stacked" color="secondary">{{"emirateID" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label>
+            <ion-input type="text" *ngIf="registerForm.value.IdentificType == '91' || registerForm.value.IdentificType == '95'" minlength="10" formControlName="IdentificNO" readonly></ion-input>
+            <ion-input type="text" *ngIf="registerForm.value.IdentificType == '89' || registerForm.value.IdentificType == '90'" minlength="18" [brmasker]="{mask:'000-0000-0000000-0', len:18, userCaracters: false}" readonly formControlName="IdentificNO"></ion-input>
+          </ion-item>
+
+
+
+          <!-- Expiry Date -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"expiryDate" | translate}}</ion-label>
+            <ion-datetime formControlName="ExpiryDate" readonly></ion-datetime>
+          </ion-item>
+
+          <ion-item-divider mode="ios" class="ion-margin-top">
+            <ion-label>{{"contactInformation" | translate}}</ion-label>
+          </ion-item-divider>
+
+          <!-- Email Address -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"emailAddress" | translate}}</ion-label>
+            <ion-input type="email" formControlName="Email" readonly></ion-input>
+          </ion-item>
+
+          <!-- First Mobile NO -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"mobileNo" | translate}}</ion-label>
+            <ion-input placehoder="05x xxx xxxx" formControlName="FirstMobileNO" readonly></ion-input>
+          </ion-item>
+
+          <!-- Second Mobile NO -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"phoneNo" | translate}}</ion-label>
+            <ion-input placehoder="05x xxx xxxx" formControlName="SecondMobileNO" readonly></ion-input>
+          </ion-item>
+
+          <!-- Country -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"country" | translate}}</ion-label>
+            <ng-container *ngFor="let item of countries">
+              <ion-text *ngIf="item.ID == registerForm.value.CountryID">{{item.NameEN}}</ion-text>
+            </ng-container>
+          </ion-item>
+
+          <!-- City Name -->
+          <ion-item class="ion-margin-vertical">
+            <ion-label position="stacked" color="secondary">{{"city" | translate}}</ion-label>
+            <ion-input type="text" formControlName="CityName" readonly></ion-input>
+          </ion-item>
+
+          <ion-item-divider mode="ios" class="ion-margin-top">
+            <ion-label>{{"preferences" | translate}}</ion-label>
+          </ion-item-divider>
+
+          <!-- Prefered Lang -->
+          <ion-list>
+            <ion-label position="stacked" color="secondary">{{"preferedLang" | translate}}</ion-label>
+            <ion-radio-group mode="md" formControlName="PreferredLang" class="gender-wrapper">
+              <ion-grid>
+                <ion-row>
+                  <ng-container *ngFor="let item of preflang">
+                    <ion-col size="6" *ngIf="item.id == registerForm.value.PreferredLang">
+                      <ion-item lines="none" class="item-radio-checked ion-no-padding">
+                        <ion-label>{{item.name}}</ion-label>
+                        <!-- <ion-radio slot="start" [value]="item.id"></ion-radio> -->
+                      </ion-item>
+                    </ion-col>
+                  </ng-container>
+                </ion-row>
+              </ion-grid>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="guest" class="guest-wrapper">
+    <ion-text color="danger">{{'featureNotAvailableForGuestUser' | translate}}</ion-text>
+    <ion-button (click)="goLogin()" class="ion-margin-top" size="sm" color="primary">{{'loginToAccount' | translate}}
+    </ion-button>
+  </div>
+</ion-content>

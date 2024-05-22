@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="dark" (click)="dismiss()">
+        <ion-icon name="close" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-title>{{"selectCategory" | translate}}</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="wizzard-steps">
+      <div class="step1">
+        <div class="top-wrapper ion-padding">
+          <div class="title">
+            <ion-label>{{"selectTopicType" | translate}}</ion-label>
+            <!-- <ion-text>{{"whatDoYouLikeToFindGuideAbout" | translate}}</ion-text> -->
+          </div>
+          <div *ngIf="catList.length <= 2" class="header">
+            <ion-segment mode="ios" [(ngModel)]="selectedType" (ionChange)="typeChange($event)">
+              <ion-segment-button [value]="item.id" *ngFor="let item of catList">
+                <div>
+                  <ion-img [src]="path + item.icon"></ion-img>
+                  <ion-label *ngIf="currentLang == 'en'">{{item.type}}</ion-label>
+                  <ion-label *ngIf="currentLang == 'ar'">{{item.type_ar}}</ion-label>
+                </div>
+              </ion-segment-button>
+             
+            </ion-segment>
+          </div>
+    
+          <div class="header" *ngIf="catList.length > 2">
+            <ion-item lines="none">
+              <ion-thumbnail slot="start">
+                <img [src]="path + selectedCat?.icon" onError="this.src='./assets/no-image.svg'"/>
+              </ion-thumbnail>
+              <ion-label *ngIf="currentLang == 'en'">{{selectedCat?.type}}</ion-label>
+                <ion-label *ngIf="currentLang == 'ar'">{{selectedCat?.type_ar}}</ion-label>
+                <ion-icon name="chevron-down-outline" slot="end"></ion-icon>
+            </ion-item>
+          </div>
+          <!-- <div *ngIf="hasSubCat" class="header">
+            <ion-segment mode="ios">
+              <ion-segment-button (click)="back()">
+                <div>
+                  <ion-icon name="chevron-back-outline"></ion-icon>
+                  <ion-thumbnail slot="start">
+                    <img [src]="path + catDetails?.icon" onError="this.src='./assets/no-image.svg'" />
+                  </ion-thumbnail>
+                  <ion-label *ngIf="currentLang == 'en'">{{catDetails.name}}</ion-label>
+                  <ion-label *ngIf="currentLang == 'ar'">{{catDetails.name_ar}}</ion-label>
+                </div>
+              </ion-segment-button>
+             
+            </ion-segment>
+          </div> -->
+        </div>
+        <!-- <ion-item>
+          <div>
+            <ion-label color="secondary">{{'selectTopicType' | translate}}</ion-label>
+            <ion-select [(ngModel)]="selectedType" okText="{{'okay' | translate}}" cancelText="{{'cancel' | translate}}" (ionChange)="typeChange()">
+              <ion-select-option [value]="item.id" *ngFor="let item of catList">
+                {{ currentLang == 'en' ? item.type : item.type_ar}}</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-item> -->
+      </div>
+      <div class="step2" *ngIf="step == 1">
+        <ion-item>
+          <div class="title">
+            <ion-label color="secondary">{{'selectCategory' | translate}}</ion-label>
+            <!-- <ion-select [(ngModel)]="selectedCat" okText="{{'okay' | translate}}" cancelText="{{'cancel' | translate}}" (ionChange)="catChange('1')">
+              <ion-select-option [value]="item.id" *ngFor="let item of agriculture">
+                {{ currentLang == 'en' ? item.name : item.name_ar}}</ion-select-option>
+            </ion-select> -->
+          </div>
+        </ion-item>
+        <ion-list>
+            <ion-item *ngFor="let item of agriculture" (click)="(catChange('1', item))" detail>
+              {{ currentLang == 'en' ? item.name : item.name_ar}}
+            </ion-item>
+        </ion-list>
+      </div>
+      <div class="step3" *ngIf="step == 2">
+        <ion-item *ngIf="hasSubCat">
+          <div class="title">
+            <ion-label color="secondary">{{'selectCategory' | translate}}</ion-label>
+            <!-- <ion-select [(ngModel)]="selectedSubCat" okText="{{'okay' | translate}}" cancelText="{{'cancel' | translate}}" (ionChange)="catChange('2')">
+              <ion-select-option [value]="item.id" *ngFor="let item of subCatList">
+                {{ currentLang == 'en' ? item.name : item.name_ar}}</ion-select-option>
+            </ion-select> -->
+          </div>
+        </ion-item>
+        <ion-list>
+          <ion-item *ngFor="let item of subCatList" (click)="(catChange('2', item))" detail>
+            {{ currentLang == 'en' ? item.name : item.name_ar}}
+          </ion-item>
+      </ion-list>
+      </div>
+      <div class="step4" *ngIf="step == 3">
+        <ion-item>
+          <div class="title">
+            <ion-label color="secondary">{{'selectTopic' | translate}}</ion-label>
+            <!-- <ion-select [(ngModel)]="selectedTopic" okText="{{'okay' | translate}}" cancelText="{{'cancel' | translate}}">
+              <ion-select-option [value]="item.id" *ngFor="let item of filterTopicList">
+                {{ currentLang == 'en' ? item.title : item.title_ar}}</ion-select-option>
+            </ion-select> -->
+          </div>
+        </ion-item>
+        <ion-list>
+          <ion-item *ngFor="let item of filterTopicList" (click)="goToMessage(item)">
+            {{ currentLang == 'en' ? item.title : item.title_ar}}
+          </ion-item>
+      </ion-list>
+      </div>
+      <div class="step5" *ngIf="step == 4">
+          <ion-item lines="none">
+           <div class="title">
+              <ion-label color="secondary">{{'WhatDoYouWantToDiscussAbout' | translate}}</ion-label>
+           </div>
+          </ion-item>
+          <div class="ion-padding-horizontal">
+          <ion-textarea #message rows="16" [(ngModel)]="extraMessage"></ion-textarea>
+        </div>
+      </div>
+  </div>
+    <!-- <ion-button color="primary" expand="block" class="ion-margin" (click)="submit()">
+      {{'start' | translate}}
+    </ion-button> -->
+</ion-content>
+<ion-footer *ngIf="step > 1" class="ion-padding-horizontal">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="goBack()" fill="solid">
+        <ion-icon name="chevron-back-outline"></ion-icon> {{"back" | translate}}
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="step == 4">
+      <ion-button color="primary" (click)="submit()" fill="solid">
+        {{"start" | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

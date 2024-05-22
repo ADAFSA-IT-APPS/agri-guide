@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="secondary" (click)="dismiss()">
+          {{'close' | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list class="ion-no-padding">
+      <ion-item *ngFor="let item of category" lines="none" (click)="selectCat(item.id)">
+        <ion-thumbnail slot="start">
+          <img [src]="path + item.icon" onError="this.src='./assets/no-image.svg'"/>
+        </ion-thumbnail>
+        <ion-label *ngIf="currentLang == 'en'">{{item.type}}</ion-label>
+          <ion-label *ngIf="currentLang == 'ar'">{{item.type_ar}}</ion-label>
+      </ion-item>
+  </ion-list>
+</ion-content>

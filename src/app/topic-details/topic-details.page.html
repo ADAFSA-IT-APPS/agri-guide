@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+  <ion-segment class="ion-padding-horizontal ion-padding-top" mode="md" [(ngModel)]="sectionType"
+    (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="about">
+      <ion-label>{{'about' | translate}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="care" *ngIf="details?.topicDiseases?.length > 0">
+      <ion-label>{{'care' | translate}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="attachments" *ngIf="details.attachments?.length > 0">
+      <ion-label>{{'attachments' | translate}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div class="content">
+    <div class="banner">
+      <img [src]="path + details.banner" onError="this.src='./assets/no-image.svg'" />
+      <div class="title">
+        <ion-label>{{currentLang == 'en' ? details.title : details.title_ar}}</ion-label>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="name">
+        <ion-label>
+          <h1>{{currentLang == 'en' ? details.title : details.title_ar}}</h1>
+        </ion-label>
+      </div>
+      <div class="action-btns">
+        <ion-icon name="ic-heart" *ngIf="!favFound" (click)="addFavorite(selectedId)"></ion-icon>
+        <ion-icon name="ic-heart-fill" *ngIf="favFound" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        <ion-icon name="ic-share" class="ion-hide"></ion-icon>
+        <ion-icon name="ic-filter" *ngIf="sectionType == 'about'" (click)="openFilter()"></ion-icon>
+      </div>
+    </div>
+    <div class="about-wrapper" *ngIf="sectionType == 'about'">
+      <div class="inner-details ion-padding">
+        <section id="detail{{item.targetId}}" class="ion-padding-bottom" *ngFor="let item of details.sections">
+          <label>
+            <h2>{{currentLang == 'en' ? item.heading : item.heading_ar}}</h2>
+          </label>
+          <div class="description">
+            <div [innerHtml]="(currentLang == 'en' ? item.description : item.description_ar) | safeHtml"></div>
+          </div>
+          <div class="media">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" *ngFor="let itm of item.medias | slice:0:2; let i=index">
+                  <div class="media-item">
+                    <div *ngIf="itm.type == 'picture'">
+                      <img (click)="openImages(item)" onError="this.src='./assets/no-image.svg'" [src]="path + itm.url" />
+                    </div>
+                    <div *ngIf="itm.type == 'video'" (click)="openImages(item)">
+                      <iframe width="100%" height="150" [src]="getSanitizeUrl(itm.url)">
+                      </iframe>
+                    </div>
+                    <div *ngIf="itm.type == 'excel'" class="other-docs" (click)="openBrowser(itm.url)">
+                      <ion-icon name="ic-xls"></ion-icon>
+                    </div>
+                    <div *ngIf="itm.type == 'pdf'" class="other-docs" (click)="openBrowser(itm.url)">
+                      <ion-icon name="ic-pdf"></ion-icon>
+                    </div>
+                    <div *ngIf="itm.type == 'word'" class="other-docs" (click)="openBrowser(itm.url)">
+                      <ion-icon name="ic-doc"></ion-icon>
+                    </div>
+                    <div *ngIf="itm.type == 'ppt'" class="other-docs" (click)="openBrowser(itm.url)">
+                      <ion-icon name="ic-ppt"></ion-icon>
+                    </div>
+                    <div class="overlay" *ngIf="item.medias.length > 2 && i == 1" (click)="openImages(item)">
+                      <h1>+{{item.medias.length - 1}}</h1>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="care-wrapper" *ngIf="sectionType == 'care'">
+      <div class="inner-details">
+        <ion-card *ngFor="let pest of details?.topicDiseases">
+          <img [src]="path + pest.diseases.banner" onError="this.src='./assets/no-image.svg'" (click)="diseaseDetails(pest.diseases.id)" />
+          <ion-card-content>
+            <div class="pest-foot">
+              <ion-text (click)="diseaseDetails(pest.diseases.id)">{{currentLang == 'en' ? pest.diseases.title : pest.diseases.title_ar}}
+              </ion-text>
+              <ion-icon *ngIf="details.categories.advisor != null || details.subCategories.advisor != null" name="ic-chat"
+                (click)="goToChat(details)"></ion-icon>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+    <div class="attachment-wrapper" *ngIf="sectionType == 'attachments'">
+      <div class="inner-details">
+        <ion-list>
+          <ion-item *ngFor="let item of details.attachments">
+            <div class="doc-wrapper">
+              <div class="title" (click)="openBrowser(item.url)">
+                <ion-label>{{currentLang == 'en' ? item.title : item.title_ar}}</ion-label>
+                <ion-text>
+                  <ion-icon name="download-outline"></ion-icon> Download
+                </ion-text>
+              </div>
+              <div class="doc-type">
+                <!-- <ion-icon name="pdf-icon"></ion-icon> -->
+                <ion-icon *ngIf="item.type == 'excel'" name="ic-xls"></ion-icon>
+                <ion-icon *ngIf="item.type == 'pdf'" name="ic-pdf"></ion-icon>
+                <ion-icon *ngIf="item.type == 'word'" name="ic-doc"></ion-icon>
+                <ion-icon *ngIf="item.type == 'ppt'" name="ic-ppt"></ion-icon>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+</ion-content>

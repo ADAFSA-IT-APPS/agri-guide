@@ -1,0 +1,142 @@
+ion-toolbar {
+  --border-color: transparent;
+  align-items: center;
+  display: flex;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+ion-title {
+  margin-left: 10px;
+}
+ion-title.lang-ar {
+  text-align: right;
+}
+ion-title.lang-en {
+  text-align: left;
+}
+ion-title h2 {
+  font-weight: 500;
+  margin: 0;
+}
+
+ion-back-button {
+  color: #000;
+}
+
+.contact-avatar {
+  height: 40px;
+  width: 40px;
+  margin-left: 8px;
+}
+
+.icon-controls ion-icon {
+  font-size: 2rem;
+}
+
+ion-item {
+  --padding-start: 0px;
+}
+
+.chat-bubble {
+  width: auto;
+  max-width: 75%;
+  min-width: 25%;
+  border-radius: 25px;
+  padding: 8px 16px;
+  margin: 10px;
+  display: block;
+  clear: both;
+  position: relative;
+  margin-bottom: 0;
+}
+.chat-bubble.topic {
+  border-radius: 10px;
+  padding: 8px;
+}
+.chat-bubble.received {
+  background: #F5F5F5;
+  float: left;
+}
+.chat-bubble.received p {
+  color: #000 !important;
+}
+.chat-bubble.send {
+  background: var(--ion-color-primary);
+  float: right;
+  text-align: left;
+  color: #fff;
+  transition: all 0.3s;
+}
+.chat-bubble .topic-details {
+  display: flex;
+  flex-direction: column;
+}
+.chat-bubble .topic-details .topic-image img {
+  border-radius: 10px;
+}
+.chat-bubble.image {
+  padding: 8px;
+  border-radius: 10px;
+}
+.chat-bubble.image img {
+  border-radius: 10px;
+}
+.chat-bubble h6 {
+  margin: 0;
+  font-weight: 400;
+}
+.chat-bubble p {
+  margin: 0;
+  margin-top: 4px;
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+::ng-deep .my-custom-class .modal-wrapper {
+  height: 70vh;
+  margin-top: auto;
+  border-top-right-radius: 33px;
+  border-top-left-radius: 33px;
+}
+
+::ng-deep .request-view-modal .modal-wrapper {
+  max-height: 320px;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+  margin-top: auto;
+  border-top-right-radius: 33px;
+  border-top-left-radius: 33px;
+}
+
+::ng-deep .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+}
+
+::ng-deep .swiper-pagination-bullets {
+  bottom: 10px !important;
+}
+
+::ng-deep .swiper-pagination-bullet-active {
+  width: 8px;
+  height: 8px;
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=conversation.page.css.map */

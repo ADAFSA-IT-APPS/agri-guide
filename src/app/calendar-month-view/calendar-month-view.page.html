@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'events' | translate}}</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon color="secondary" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon color="secondary" name="ic-notification"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" #content>
+  <app-weather></app-weather>
+  <ion-row class="ion-margin-top">
+    <ion-col size="12" *ngFor="let month of monthData" class="ion-no-padding">
+      <app-accordion [id]="getID(month.month+month.year)" name="{{ month.month }} {{ month.year }}"  calendarData="{{ stringifyData(month) }}"
+        (change)="scrollTo($event)">
+      </app-accordion>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="{{'back' | translate}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">{{'viewImages' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="sub-title ion-text-center ion-padding-vertical">
+    <ion-text>{{ details.title }}</ion-text>
+  </div>
+  <!-- <div class="sub-title ion-text-center ion-padding-vertical">
+    <ion-text>What you want Know?</ion-text>
+  </div> -->
+  <ion-list class="ion-padding">
+    <ion-item lines="none" class="ion-no-padding ion-margin-bottom" *ngFor="let image of details.gallery">
+      <div *ngIf="image.type.toLowerCase() == 'picture'">
+        <img [src]="path + image.url" onError="this.src='./assets/no-image.svg'"/>
+      </div>
+      <div *ngIf="image.type == 'video'" >
+        <iframe width="100%" height="300" [src]="getSanitizeUrl(image.url)">
+        </iframe>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="secondary" (click)="dismiss('close')">
+          {{'close' | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<ion-list>
+  <ion-radio-group [(ngModel)]="selectedAdvisor">
+    <ion-item  *ngFor="let advisor of AdvisorList">
+      <ion-avatar>
+        <img [src]="advisor.profilePic" onError="this.src='./assets/person-circle-outline.svg'">
+      </ion-avatar>
+      <ion-label>{{advisor.name}}</ion-label>
+      <ion-radio mode="md" slot="start" [value]="advisor.id"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+</ion-content>
+
+<ion-footer mode="ios" class="ion-padding-horizontal ion-padding-bottom">
+  <ion-toolbar>
+    <ion-button expand="block" (click)="dismiss('next')">{{"select" | translate}}</ion-button>
+  </ion-toolbar>
+</ion-footer>

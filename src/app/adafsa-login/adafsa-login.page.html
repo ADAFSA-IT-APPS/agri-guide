@@ -1,0 +1,82 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{'back' | translate}}" color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"ADAFSALogin" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content class="ion-padding login-page" forceOverscroll="true">
+  <div class="main">
+    <div class="slideshow">
+      <ion-slides #bgslides pager="false" [options]="slideOpts">
+        <ion-slide *ngFor="let item of slides">
+          <ion-img [src]="item"></ion-img>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div class="header">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <div class="lang">
+              <ion-button class="ion-no-padding" (click)="changeLng()">
+                {{selectedLang == 'ar' ? 'en' : 'ar'}}
+                <ion-ripple-effect></ion-ripple-effect>
+              </ion-button>
+              </div>
+          </ion-col>
+          <ion-col size="8">
+              <ion-img src="./assets/ADAFSA-logo-w.svg"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <form [formGroup]="loginForm" novalidate>
+      <div class="content">
+        <div class="divider">
+          <ion-grid class="ion-no-padding">
+            <ion-row class="ion-align-items-end">
+              <ion-col>
+                <div class="line"></div>
+              </ion-col>
+              <ion-col size="auto">
+                <ion-icon name="ic-user2"></ion-icon>
+              </ion-col>
+              <ion-col>
+                <div class="line"></div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <ion-item class="ion-margin-top">
+          <!-- <ion-label position="stacked" color="secondary">{{"username" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label> -->
+          <ion-icon name="ic-user2" slot="start"></ion-icon>
+          <ion-input placeholder="{{'username' | translate}}" formControlName="username"></ion-input>
+        </ion-item>
+        <ion-text class="required" color="danger" *ngIf="submitted && f.username.invalid">
+          <span *ngIf="f.username.errors.required">{{'required' | translate}}</span>
+          <span *ngIf="f.username.errors?.pattern">{{'invalidPhone' | translate}}</span>
+        </ion-text>
+        <ion-item class="ion-margin-top">
+          <!-- <ion-label position="stacked" color="secondary">{{"password" | translate}} <ion-text color="danger" class="astrick">*</ion-text></ion-label> -->
+          <ion-icon name="ic-lock" slot="start"></ion-icon>
+          <ion-input type="password" placeholder="{{'password' | translate}}" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-text class="required" color="danger" *ngIf="submitted && f.password.invalid">
+          <span *ngIf="f.password.errors?.required">{{'required' | translate}}</span>
+        </ion-text>
+        <div class="login ion-margin-top">
+          <ion-button expand="block" (click)="submit()">{{"loginToAccount" | translate}}</ion-button>
+        </div>
+        <div class="ion-margin-top ion-text-center">
+          <ion-text color="light" class="forgot" (click)="goToForgot()">{{"forgotYourPassword" | translate}}</ion-text>
+        </div>
+      </div>
+      <div class="footer ion-text-center">
+        <ion-button (click)="goToRegister()">{{"registration" | translate}}</ion-button>
+        <ion-text color="light" class="forgot" (click)="guestVisitor()">{{"continueAsGuestVisitor" | translate}}</ion-text>
+      </div>
+    </form>
+  </div>
+</ion-content>

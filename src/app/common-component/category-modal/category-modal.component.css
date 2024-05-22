@@ -1,0 +1,119 @@
+ion-toolbar {
+  --border-width: 0 !important;
+}
+ion-toolbar ion-button {
+  --ion-color-primary-contrast: var(--ion-color-secondary);
+}
+
+.main .title {
+  color: var(--ion-color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.main .title ion-label {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+.main ion-segment {
+  --background: transparent;
+  border: 2px solid #979797 !important;
+  --ion-background-color: #fff !important;
+  --box-shadow: none;
+  height: 44px !important;
+}
+.main ion-segment ion-segment-button {
+  margin: 0 !important;
+  --border-radius: 0;
+  --indicator-box-shadow: 0;
+}
+.main ion-segment ion-segment-button ion-label {
+  margin: 0 10px;
+}
+.main ion-segment ion-segment-button ion-img::part(image) {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.main ion-segment ion-segment-button::part(indicator) {
+  margin-left: -2px;
+  margin-right: -2px;
+}
+.main ion-segment ion-segment-button:before {
+  margin: 0 !important;
+  --border-width: 0 !important;
+}
+.main ion-segment ion-segment-button div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.main ion-segment ion-segment-button div ion-icon {
+  font-size: 1.4rem;
+  margin-right: 8px;
+}
+.main .item {
+  margin: 8px auto;
+  text-align: center;
+}
+.main .item.selected ion-img {
+  background: rgba(184, 204, 148, 0.5);
+}
+.main .item.selected:before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  background: var(--ion-color-secondary);
+  border-radius: 50%;
+  top: 6px;
+  z-index: 99;
+  right: 0px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+.main .item.selected:after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 10px;
+  transform: rotate(45deg);
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  top: 10px;
+  z-index: 99;
+  right: 9px;
+  border-color: #fff;
+}
+.main .item ion-img {
+  height: 64px;
+  max-width: 64px;
+  margin: auto;
+  border: 2px solid #e5e7e6;
+  padding: 4px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.main .item ion-img::part(image) {
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 2px;
+}
+.main .item ion-text {
+  font-size: 0.8rem;
+}
+
+.custom-skeleton .dimg ion-skeleton-text {
+  height: 70px;
+  width: 80%;
+  margin: auto;
+  border-radius: 12px;
+}
+.custom-skeleton ion-label ion-skeleton-text {
+  width: 50% !important;
+  margin: auto;
+  margin-top: 8px;
+  height: 6px;
+}/*# sourceMappingURL=category-modal.component.css.map */
